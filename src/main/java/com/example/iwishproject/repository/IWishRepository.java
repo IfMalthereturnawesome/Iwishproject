@@ -132,7 +132,8 @@ public class IWishRepository {
       e.printStackTrace();
     }
   }
-  public void login(){
+
+  public void login(String userName, String password){
 
   }
 }
