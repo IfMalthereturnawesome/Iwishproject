@@ -1,10 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Hjem</title>
+    <link th:href="@{/CSS/main.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="../static/CSS/main.css">
+
 </head>
 <body>
+<nav class="navigation">
+    <div class="big-container" >
+        <div class="small-container">
+            <a href="../" class="links" >Hjem</a>
+        </div>
+        <div class="small-container">
+            <a href="../hvordan" class="links">Hvordan</a>
+        </div>
+        <div class="small-container">
+            <a href="../omos" class="links">Om os</a>
+        </div>
+        <div class="small-container">
+            <a href="../tilmeld" class="links">Tilmeld</a>
+        </div>
+        <div class="small-container">
+            <a href="../login" class="links">Log ind</a>
+        </div>
+    </div>
 
+</nav>
 </body>
 </html>
