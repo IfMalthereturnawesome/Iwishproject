@@ -16,7 +16,7 @@ import static com.example.iwishproject.utility.ConnectionManager.getOffConnectio
 @Repository
 public class IWishRepository {
 
-//Viser alle ønsker
+  //Viser alle ønsker
   public List<Wish> findAllWishes(){
     //tom arraylist
     ArrayList<Wish> wishes = new ArrayList<>();
@@ -52,8 +52,8 @@ public class IWishRepository {
     return wishes;
   }
 
-//Tilføjer en ønske
-  public void addwish(Wish wish){
+  //Tilføje en ønske
+  public void addWish(Wish wish){
     getConnection();
     try{
       //prep statement
@@ -75,5 +75,21 @@ public class IWishRepository {
     }
   }
 
+  //Slet en ønske
+  public void deleteWish(int wishID){
+    getConnection();
+    try{
+      PreparedStatement preparedStatement = getConnection().prepareStatement(
+          "DELETE FROM wishes WHERE id = ?");
+
+      preparedStatement.setInt(1, wishID);
+
+      preparedStatement.executeUpdate();
+
+    } catch(SQLException e){
+      System.out.println("Could not create");
+      e.printStackTrace();
+    }
+  }
 }
 
