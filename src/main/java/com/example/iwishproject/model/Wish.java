@@ -7,6 +7,9 @@ public class Wish {
   private double price;
   private String link;
 
+  public Wish() {
+  }
+
   public Wish(int id, String title, String description, double price, String link) {
     this.id = id;
     this.title = title;
