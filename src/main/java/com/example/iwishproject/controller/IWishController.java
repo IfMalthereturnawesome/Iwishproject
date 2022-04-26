@@ -54,4 +54,13 @@ public String onskeliste(){
 
     return "redirect:/ønskeliste";
   }
+
+  @PostMapping("/tilmeld")
+  public String tilmeld(@RequestParam("eMail") String eMail,
+                        @RequestParam("password") String password){
+    IWishRepository iWishRepository = new IWishRepository();
+    iWishRepository.createUser(eMail,password);
+
+    return "redirect:/login";
+  }
 }
