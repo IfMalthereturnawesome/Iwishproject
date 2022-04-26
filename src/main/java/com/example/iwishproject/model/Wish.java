@@ -1,10 +1,27 @@
 package com.example.iwishproject.model;
 
-public class Ønske {
+public class Wish {
+  private int id;
   private String title;
   private String description;
   private double price;
   private String link;
+
+  public Wish(int id, String title, String description, double price, String link) {
+    this.id = id;
+    this.title = title;
+    this.description = description;
+    this.price = price;
+    this.link = link;
+  }
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
 
   public String getTitle() {
     return title;
