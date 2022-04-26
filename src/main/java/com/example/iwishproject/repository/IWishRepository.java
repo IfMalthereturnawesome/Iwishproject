@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import static com.example.iwishproject.utility.ConnectionManager.getConnection;
 import static com.example.iwishproject.utility.ConnectionManager.getOffConnection;
@@ -89,6 +90,27 @@ public class IWishRepository {
     } catch(SQLException e){
       System.out.println("Could not create");
       e.printStackTrace();
+    }
+  }
+
+  //Rediger en ønske
+  public void editWish(Wish wish){
+    Scanner input = new Scanner(System.in);
+    final String UPDATE_QUERY = "UPDATE wish SET title = ?, description = ?, price = ?, link = ? WHERE id = ?";
+    getConnection();
+
+    try{
+      PreparedStatement preparedStatementUpdateRow = getConnection().prepareStatement(UPDATE_QUERY);
+      preparedStatementUpdateRow.setInt(1,wish.getId());
+      preparedStatementUpdateRow.setString(2, wish.getTitle());
+      preparedStatementUpdateRow.setString(3, wish.getDescription());
+      preparedStatementUpdateRow.setDouble(4, wish.getPrice());
+      preparedStatementUpdateRow.setString(5, wish.getLink());
+
+      preparedStatementUpdateRow.executeUpdate();
+
+    }catch (SQLException e){
+      System.out.println(e);
     }
   }
 }
