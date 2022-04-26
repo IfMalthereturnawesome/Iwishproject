@@ -10,5 +10,20 @@ public class IWishController {
   public String index(){
     return "index";
   }
-
+@GetMapping("/hvordan")
+  public String hvordan(){
+    return "hvordan";
+}
+@GetMapping("/login")
+public String login(){
+    return "login";
+}
+@GetMapping("/omos")
+public String omOs(){
+    return "omos";
+}
+@GetMapping("/ønskeliste")
+public String onskeliste(){
+    return "ønskeliste";
+}
 }
