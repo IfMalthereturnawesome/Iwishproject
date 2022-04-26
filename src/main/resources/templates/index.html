@@ -5,28 +5,52 @@
     <title>Hjem</title>
     <link th:href="@{/CSS/main.css}" rel="stylesheet"/>
     <link rel="stylesheet" href="../static/CSS/main.css">
+    <link th:href="@{/CSS/NavBar.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="../static/CSS/NavBar.css">
 
 </head>
 <body>
-<nav class="navigation">
-    <div class="big-container" >
-        <div class="small-container">
-            <a href="../" class="links" >Hjem</a>
+
+
+<main class="hero-section">
+    <nav class="navi-section">
+        <div class="navbar" id="navbar">
+            <div class="logo-left">
+                <a href="index.html"><img class="small-nav-logo" src="/images/Logo-250x250.png" alt="logo"/></a>
+            </div>
+            <a href="hvordan.html">Hvordan?</a>
+            <a href="omos.html">Om os</a>
+            <a href="tilmeld.html">Tilmeld</a>
+            <a href="login.html">Log ind</a>
         </div>
-        <div class="small-container">
-            <a href="../hvordan" class="links">Hvordan</a>
-        </div>
-        <div class="small-container">
-            <a href="../omos" class="links">Om os</a>
-        </div>
-        <div class="small-container">
-            <a href="../tilmeld" class="links">Tilmeld</a>
-        </div>
-        <div class="small-container">
-            <a href="../login" class="links">Log ind</a>
+    </nav>
+    <style  >
+        .hero-section {
+            background-image: url(../images/heroimage.jpg);
+            background-size: cover;
+
+            background-position: center;
+        }
+    </style>
+    <div class="mainheader">
+        <div class="wrapper">
+            <h1 class="maintext">
+                <style>
+                    .maintext::after {
+                        content: "Opret din ønskeseddel nemt og hurtigt reserver og del med venner og familie";
+                        display: flex;
+                        color: #F5F3ED;
+                        font-size: 60px;
+                        line-height: 1;
+                        text-transform: uppercase;
+                        font-family: Inter, sans-serif;
+
+                    }
+                </style>
+            </h1>
         </div>
     </div>
+</main>
 
-</nav>
 </body>
 </html>
