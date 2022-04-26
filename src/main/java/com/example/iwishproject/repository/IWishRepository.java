@@ -3,6 +3,7 @@ package com.example.iwishproject.repository;
 import com.example.iwishproject.model.Wish;
 import org.springframework.stereotype.Repository;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -24,7 +25,7 @@ public class IWishRepository {
       getConnection();
       System.out.println("Forbundet til DB");
       Statement statement = getConnection().createStatement();
-      final String SQL_QUERY = "SELECT * FROM ønsker";
+      final String SQL_QUERY = "SELECT * FROM wishes";
       ResultSet resultSet = statement.executeQuery(SQL_QUERY);
 
       // Læser fra tabel
@@ -51,6 +52,28 @@ public class IWishRepository {
     return wishes;
   }
 
+//Tilføjer en ønske
+  public void addwish(Wish wish){
+    getConnection();
+    try{
+      //prep statement
+      PreparedStatement preparedStatement = getConnection().prepareStatement(
+          "INSERT INTO wishes(id, title, description, price, link) " +
+              "VALUES (?, ?, ?, ?, ?)");
+      //set attributer
+      preparedStatement.setInt(1,wish.getId());
+      preparedStatement.setString(2, wish.getTitle());
+      preparedStatement.setString(3, wish.getDescription());
+      preparedStatement.setDouble(4, wish.getPrice());
+      preparedStatement.setString(1, wish.getLink());
+      //execute statement
+      preparedStatement.executeUpdate();
+    }
+    catch(SQLException e){
+      System.out.println("Could not create");
+      e.printStackTrace();
+    }
+  }
 
 }
 
