@@ -1,15 +1,39 @@
 package com.example.iwishproject.model;
 
 public class User {
+
+  private int ID;
+
   private String eMail;
+
   private String password;
 
-  public User(String eMail, String password) {
+  private String firstName;
+
+  private String lastName;
+
+  public User(int ID, String eMail, String password) {
+    this.ID = ID;
     this.eMail = eMail;
     this.password = password;
   }
 
+  public User(int id, String eMail, String password, String firstName, String lastName) {
+    this.ID = id;
+    this.eMail = eMail;
+    this.password = password;
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
   public User() {
+  }
+
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
   }
 
   public String geteMail() {
@@ -20,11 +44,27 @@ public class User {
     this.eMail = eMail;
   }
 
-  public String getPassword() {
-    return password;
+  public String getFirstName() {
+    return firstName;
   }
 
-  public void setPassword(String password) {
-    this.password = password;
+  public void setFirstName(String firstName) {
+    this.firstName = firstName;
+  }
+
+  public String getLastName() {
+    return lastName;
+  }
+
+  public void setLastName(String lastName) {
+    this.lastName = lastName;
+  }
+
+  public int getID() {
+    return ID;
+  }
+
+  public void setID(int ID) {
+    this.ID = ID;
   }
 }

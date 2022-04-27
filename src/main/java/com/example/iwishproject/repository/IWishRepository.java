@@ -22,9 +22,6 @@ public class IWishRepository {
     //tom arraylist
     ArrayList<Wish> wishes = new ArrayList<>();
     try {
-      //Forbinder
-      getConnection();
-      System.out.println("Forbundet til DB");
       Statement statement = getConnection().createStatement();
       final String SQL_QUERY = "SELECT * FROM wishes";
       ResultSet resultSet = statement.executeQuery(SQL_QUERY);
@@ -114,27 +111,5 @@ public class IWishRepository {
     }
   }
 
-  public void createUser(String userName, String password){
-  getConnection();
-    try{
-      final String CREATEQUERY = "CREATE USER " +"'"+ userName +"'" + "@'localhost' IDENTIFIED BY " + "'"+ password+"'";
-      final String GRANTQUERY = "GRANT SELECT ON * . * TO " + userName + "@localhost";
-
-  PreparedStatement preparedStatement = getConnection().prepareStatement(CREATEQUERY);
-  PreparedStatement preparedStatementGrant = getConnection().prepareStatement(GRANTQUERY);
-  //Opretter bruger
-  preparedStatement.executeQuery();
-  //giver tilladelse til SELECT
-  preparedStatementGrant.executeQuery();
-
-    } catch(SQLException e){
-      System.out.println("Could not create");
-      e.printStackTrace();
-    }
-  }
-
-  public void login(String userName, String password){
-
-  }
 }
 
