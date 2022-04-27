@@ -1,5 +1,7 @@
 package com.example.iwishproject.controller;
 
+import com.example.iwishproject.model.User;
+import com.example.iwishproject.model.Wish;
 import com.example.iwishproject.repository.IWishRepository;
 import com.example.iwishproject.repository.UserRepository;
 import org.springframework.stereotype.Controller;
@@ -17,10 +19,18 @@ public class UserController {
 
   @PostMapping("/tilmeld")
   public String tilmeld(@RequestParam("eMail") String eMail,
-                        @RequestParam("password") String password){
-    UserRepository userRepository = new UserRepository();
-    userRepository.createUser(eMail,password);
+                        @RequestParam("password") String password,
+                        @RequestParam("firstName") String firstName,
+                        @RequestParam("lastName") String lastName){
 
+    UserRepository userRepository = new UserRepository();
+    User newUser = new User();
+    newUser.seteMail(eMail);
+    newUser.setPassword(password);
+    newUser.setFirstName(firstName);
+    newUser.setLastName(lastName);
+
+    userRepository.createUser(newUser);
     return "redirect:/login";
   }
 
