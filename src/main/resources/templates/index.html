@@ -10,25 +10,23 @@
 
 </head>
 <body>
-
-
 <main class="hero-section">
     <nav class="navi-section">
         <div class="navbar" id="navbar">
             <div class="logo-left">
-                <a href="index.html"><img class="small-nav-logo" src="/images/Logo-250x250.png" alt="logo"/></a>
+                <a href="index.html"><img th:src="@{../static/images/Logo-250x250.png}" class="small-nav-logo" alt="logo"/></a>
             </div>
             <a href="hvordan.html">Hvordan?</a>
             <a href="omos.html">Om os</a>
             <a href="tilmeld.html">Tilmeld</a>
-            <a href="login.html">Log ind</a>
+            <a href="login.html" class="login-button">Log ind</a>
         </div>
+
     </nav>
     <style>
         .hero-section {
-            background-image: url(../images/heroimage.jpg);
+            background-image: url(../static/CSS/images/heroimage.jpg);
             background-size: cover;
-
             background-position: center;
         }
     </style>
@@ -51,6 +49,5 @@
         </div>
     </div>
 </main>
-
 </body>
 </html>
