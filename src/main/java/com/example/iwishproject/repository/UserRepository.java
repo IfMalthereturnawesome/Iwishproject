@@ -38,13 +38,13 @@ public class UserRepository {
     getConnection();
 
     try {
-      Statement s = getConnection().createStatement();
+
       final String QUERY = "SELECT * FROM registeredusers WHERE eMail = ?";
 
-      PreparedStatement psProduct = getConnection().prepareStatement(QUERY); //prepared statement
+      PreparedStatement preparedStatement = getConnection().prepareStatement(QUERY); //prepared statement
 
-      psProduct.setString(1, eMail); // set eMail der skal søges på
-      ResultSet rs = psProduct.executeQuery();  // Execute query
+      preparedStatement.setString(1, eMail); // set eMail der skal søges på
+      ResultSet rs = preparedStatement.executeQuery();  // Execute query
 
       //read data from resultset
       rs.next();
@@ -65,7 +65,6 @@ public class UserRepository {
   public boolean passwordCheck(User user, String password){
     if (password.equals(user.getPassword())) {
       return true;
-
     } else {
       return false;
     }
