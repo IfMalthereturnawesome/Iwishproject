@@ -17,6 +17,12 @@ public class UserController {
     return "login";
   }
 
+  @GetMapping("/tilmeld")
+  public String tilmeldSide(){
+    return "tilmeld";
+  }
+
+
   @PostMapping("/tilmeld")
   public String tilmeld(@RequestParam("eMail") String eMail,
                         @RequestParam("password") String password,
