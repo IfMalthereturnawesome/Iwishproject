@@ -36,7 +36,7 @@ src: url("/font/Inter-Thin.ttf") format("ttf");
 .small-container {
     display: block;
     align-items: center;
-    padding: 20px 5px;
+
 }
 .small-container:hover {
     background-color: #ece5e5;
@@ -135,6 +135,8 @@ a {
     margin-top: -25px;
     margin-bottom: -25px;
 }
+
+
 
 
 
