@@ -8,18 +8,20 @@ body {
     background-color: #ece5e5;
     font-family: sans-serif;
 }
+
 @font-face {
     font-family: Inter;
-src: url("/font/Inter-Black.ttf") format("ttf");
-src: url("/font/Inter-Bold.ttf") format("ttf");
-src: url("/font/Inter-ExtraBold.ttf") format("ttf");
-src: url("/font/Inter-ExtraLight.ttf") format("ttf");
-src: url("/font/Inter-Light.ttf") format("ttf");
-src: url("/font/Inter-Medium.ttf") format("ttf");
-src: url("/font/Inter-Regular.ttf") format("ttf");
-src: url("/font/Inter-SemiBold.ttf") format("ttf");
-src: url("/font/Inter-Thin.ttf") format("ttf");
+    src: url("/font/Inter-Black.ttf") format("ttf");
+    src: url("/font/Inter-Bold.ttf") format("ttf");
+    src: url("/font/Inter-ExtraBold.ttf") format("ttf");
+    src: url("/font/Inter-ExtraLight.ttf") format("ttf");
+    src: url("/font/Inter-Light.ttf") format("ttf");
+    src: url("/font/Inter-Medium.ttf") format("ttf");
+    src: url("/font/Inter-Regular.ttf") format("ttf");
+    src: url("/font/Inter-SemiBold.ttf") format("ttf");
+    src: url("/font/Inter-Thin.ttf") format("ttf");
 }
+
 .container {
     width: 1200px;
     margin: 60px auto;
@@ -33,11 +35,13 @@ src: url("/font/Inter-Thin.ttf") format("ttf");
 
 }
 
-.small-container {
-    display: block;
-    align-items: center;
 
+.small-container {
+    display: flex;
+    align-items: center;
+    color: #3DD9F8;
 }
+
 .small-container:hover {
     background-color: #ece5e5;
 
@@ -47,14 +51,97 @@ src: url("/font/Inter-Thin.ttf") format("ttf");
     background-color: #EDFBFF;
 
 }
+
 .mainheader {
-    background-image: url("images/heroimage.jpg");
+    background-image: url("images/heroimg.jpg");
     width: 100%;
-    height: 1030px;
+    height: 870px;
     display: flex;
     background-size: cover;
+    background-repeat: no-repeat;
 
 }
+
+.text-section {
+    background-color: #2E7CC7;
+}
+
+.article-1 {
+    background-image: url("images/cloudimg left.png");
+    width: 100%;
+    height: 330px;
+    display: flex;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.article-wrapper {
+    margin-left: 50px;
+    margin-right: 50px;
+    padding-left: 50%;
+    padding-right: 5%;
+}
+
+.article-3 {
+    background-image: url("images/cloudimg left.png");
+    width: 100%;
+    height: 330px;
+    display: flex;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.article-wrapper-3 {
+    margin-left: 50px;
+    margin-right: 50px;
+    padding-left: 50%;
+    padding-right: 5%;
+}
+
+.article-2 {
+    background-image: url("images/cloudimg right.png");
+    background-position: right;
+    width: 100%;
+    height: 330px;
+    display: flex;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+
+}
+
+.article-wrapper-2 {
+    margin-left: 50px;
+    margin-right: 50px;
+    padding-left: 5%;
+    padding-right: 50%;
+
+}
+
+
+.article-header {
+    display: flex;
+    margin-top: 60px;
+    justify-content: start;
+    color: #f1efef;
+    font-size: 36px;
+    line-height: 1;
+    font-weight: bold;
+    margin-bottom: 20px;
+
+    font-family: Inter, sans-serif;
+}
+
+.article-text {
+    display: flex;
+    justify-content: start;
+    color: #f1efef;
+    font-size: 16px;
+    line-height: 1.4;
+    font-weight: normal;
+    font-family: Inter, sans-serif;
+}
+
 .links {
     text-decoration: none;
     font-size: 16px;
@@ -64,17 +151,21 @@ src: url("/font/Inter-Thin.ttf") format("ttf");
     color: white;
 
 }
+
 .links:hover {
     color: black;
 
 }
+
 a.individual {
     color: black;
 }
+
 .button-link {
     color: white;
     text-decoration: none;
 }
+
 h1 {
     font-size: 32px;
     font-weight: 900;
@@ -86,6 +177,7 @@ h1 {
     color: white;
 
 }
+
 .maintext::before {
     content: "Delevenlig";
     display: flex;
@@ -112,12 +204,14 @@ h1 {
     padding-right: 5%;
 
 }
+
 .logo-nav {
     width: 150px;
     height: auto;
     display: flex;
     justify-content: center;
 }
+
 p {
     font-weight: 300;
     font-size: 16px;
@@ -126,6 +220,7 @@ p {
     color: #4b4747;
 
 }
+
 a {
     text-decoration: none;
     list-style: none;
