@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class IWishController {
+public class WishController {
 
   @GetMapping("/")
   public String index(){
@@ -17,10 +17,6 @@ public class IWishController {
 @GetMapping("/hvordan")
   public String hvordan(){
     return "hvordan";
-}
-@GetMapping("/login")
-public String login(){
-    return "login";
 }
 @GetMapping("/omos")
 public String omOs(){
@@ -55,12 +51,4 @@ public String onskeliste(){
     return "redirect:/ønskeliste";
   }
 
-  @PostMapping("/tilmeld")
-  public String tilmeld(@RequestParam("eMail") String eMail,
-                        @RequestParam("password") String password){
-    IWishRepository iWishRepository = new IWishRepository();
-    iWishRepository.createUser(eMail,password);
-
-    return "redirect:/login";
-  }
 }
