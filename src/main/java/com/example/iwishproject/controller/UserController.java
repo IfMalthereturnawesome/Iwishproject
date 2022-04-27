@@ -40,13 +40,11 @@ public class UserController {
     return "redirect:/login";
   }
 
-  @PostMapping("/login")
+  @PostMapping("/loginLoad")
   public String loginValidate(@RequestParam("eMail") String eMail,
                               @RequestParam("password") String password){
     UserRepository userRepository = new UserRepository();
-    User newUser = userRepository.findUser(eMail);
-  userRepository.passwordCheck(newUser,password);
-  if (userRepository.passwordCheck(newUser,password)){
+  if (userRepository.passwordCheck(userRepository.findUser(eMail),password)){
     return "redirect:/index";
   }else
     return "redirect:/tilmeld";
