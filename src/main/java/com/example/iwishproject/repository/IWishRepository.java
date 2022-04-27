@@ -22,9 +22,6 @@ public class IWishRepository {
     //tom arraylist
     ArrayList<Wish> wishes = new ArrayList<>();
     try {
-      //Forbinder
-      getConnection();
-      System.out.println("Forbundet til DB");
       Statement statement = getConnection().createStatement();
       final String SQL_QUERY = "SELECT * FROM wishes";
       ResultSet resultSet = statement.executeQuery(SQL_QUERY);

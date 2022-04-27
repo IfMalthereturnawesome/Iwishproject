@@ -1,6 +1,7 @@
 package com.example.iwishproject.repository;
 
 import com.example.iwishproject.model.User;
+import com.example.iwishproject.model.Wish;
 import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
@@ -33,26 +34,28 @@ public class UserRepository {
     }
   }
 
-  public User findUser(String eMail){
+  public User findUser(String inputEMail){
     //get connection from ConnectionManager
     getConnection();
 
     try {
 
-      final String QUERY = "SELECT * FROM registeredusers WHERE eMail = ?";
+      final String QUERY = "SELECT * FROM registeredusers WHERE eMail = "+inputEMail;
 
-      PreparedStatement preparedStatement = getConnection().prepareStatement(QUERY); //prepared statement
-
-      preparedStatement.setString(1, eMail); // set eMail der skal søges på
-      ResultSet rs = preparedStatement.executeQuery();  // Execute query
-
-      //read data from resultset
-      rs.next();
-      {
-        int ID = rs.getInt(1);
-        String mail = rs.getString(2);
-        String password = rs.getString(3);
-        return new User(ID, mail, password);
+      getConnection();
+      System.out.println("Forbundet til DB");
+      Statement statement = getConnection().createStatement();
+      ResultSet resultSet = statement.executeQuery(QUERY);
+      // Læser fra tabel
+      while(resultSet.next()){
+        //Giver informationerne fra tabel til attributer
+        int id = resultSet.getInt(1);
+        String eMail = resultSet.getString(2);
+        String password = resultSet.getString(3);
+        String firstName = resultSet.getString(4);
+        String lastName = resultSet.getString(5);
+        //Tilføjer dem til min constructor, for at lave Ønske objekter samt tilføjer dem til min arraylist
+        return new User(id,eMail,password,firstName,lastName);
       }
 
     } catch (SQLException e) {
