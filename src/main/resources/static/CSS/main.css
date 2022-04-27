@@ -52,6 +52,7 @@ src: url("/font/Inter-Thin.ttf") format("ttf");
     width: 100%;
     height: 1030px;
     display: flex;
+    background-size: cover;
 
 }
 .links {
