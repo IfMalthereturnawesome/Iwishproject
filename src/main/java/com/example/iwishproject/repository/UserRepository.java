@@ -25,7 +25,6 @@ public class UserRepository {
       preparedStatement.setString(3, user.getFirstName());
       preparedStatement.setString(4, user.getLastName());
       preparedStatement.setString(5, user.getPassword());
-
       preparedStatement.executeUpdate();
 
     } catch(SQLException e){
