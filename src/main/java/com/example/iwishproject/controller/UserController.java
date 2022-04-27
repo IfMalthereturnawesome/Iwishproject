@@ -47,7 +47,7 @@ public class UserController {
     User newUser = userRepository.findUser(eMail);
   userRepository.passwordCheck(newUser,password);
   if (userRepository.passwordCheck(newUser,password)){
-    return "redirect:/login";
+    return "redirect:/index";
   }else
     return "redirect:/tilmeld";
   }
