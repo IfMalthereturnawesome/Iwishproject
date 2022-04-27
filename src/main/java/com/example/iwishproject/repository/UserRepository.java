@@ -4,7 +4,9 @@ import com.example.iwishproject.model.User;
 import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import static com.example.iwishproject.utility.ConnectionManager.getConnection;
 
@@ -31,7 +33,70 @@ public class UserRepository {
     }
   }
 
-  public void login(String userName, String password){
-
+  public void validateLogin(String eMail, String password) {
+    getConnection();
+    try {
+      //Tjekker igennem alle i tabellen hvis der er noget med den specifikke mail
+      final String QUERY = "SELECT * FROM registeredusers WHERE eMail = ? AND password = ?";
+      PreparedStatement preparedStatement = getConnection().prepareStatement(QUERY);
+      User user = new User();
+      preparedStatement.setString(1,user.geteMail());
+      preparedStatement.setString(2,user.getPassword());
+      preparedStatement.executeUpdate();
+    } catch (SQLException e) {
+      System.out.println("Could not create");
+      e.printStackTrace();
+    }
   }
+  public User findUser(String eMail){
+    //get connection from ConnectionManager
+    getConnection();
+
+    try {
+      Statement s = getConnection().createStatement();
+      final String QUERY = "SELECT * FROM registeredusers WHERE eMail = ?";
+
+      PreparedStatement psProduct = getConnection().prepareStatement(QUERY); //prepared statement
+
+      psProduct.setString(1, eMail); // set eMail der skal søges på
+      ResultSet rs = psProduct.executeQuery();  // Execute query
+
+      //read data from resultset
+      rs.next();
+      {
+        int ID = rs.getInt(1);
+        String mail = rs.getString(2);
+        String password = rs.getString(3);
+        return new User(ID, mail, password);
+      }
+
+    } catch (SQLException e) {
+      System.out.println("Could not create connection");
+      e.printStackTrace();
+    }
+    return null; //User not found
+  }
+
+  public boolean passwordCheck(User user, String eMail, String password){
+
+    try {
+      String sql = "SELECT eMail,password FROM registeredusers WHERE eMail = " + eMail + " AND " + "password = " + password;
+      PreparedStatement preparedStatement = getConnection().prepareStatement(sql);
+      ResultSet rs = preparedStatement.executeQuery(sql);
+      while (rs.next()) {
+        eMail = rs.getString(user.geteMail());
+        password = rs.getString(user.getPassword());
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+
+    if (password.equals(user.getPassword())) {
+      return true;
+
+    } else {
+      return false;
+    }
+  }
+
 }

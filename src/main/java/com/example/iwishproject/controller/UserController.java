@@ -40,4 +40,15 @@ public class UserController {
     return "redirect:/login";
   }
 
+  @PostMapping("/login")
+  public String loginValidate(@RequestParam("eMail") String eMail,
+                              @RequestParam("password") String password){
+    UserRepository userRepository = new UserRepository();
+    User newUser = userRepository.findUser(eMail);
+  userRepository.passwordCheck(newUser,eMail,password);
+  if (userRepository.passwordCheck(newUser,eMail,password)){
+    return "redirect:/ønskeliste";
+  }else
+    return "redirect:/login";
+  }
 }
