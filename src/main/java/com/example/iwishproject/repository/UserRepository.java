@@ -62,19 +62,7 @@ public class UserRepository {
     return null; //User not found
   }
 
-  public boolean passwordCheck(User user, String eMail, String password){
-
-    try {
-      String sql = "SELECT eMail,password FROM registeredusers WHERE eMail = " + eMail + " AND " + "password = " + password;
-      PreparedStatement preparedStatement = getConnection().prepareStatement(sql);
-      ResultSet rs = preparedStatement.executeQuery(sql);
-      while (rs.next()) {
-        password = rs.getString(user.getPassword());
-      }
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
-
+  public boolean passwordCheck(User user, String password){
     if (password.equals(user.getPassword())) {
       return true;
 
