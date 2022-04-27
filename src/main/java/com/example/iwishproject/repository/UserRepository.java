@@ -22,9 +22,10 @@ public class UserRepository {
       //Opretter bruger
       preparedStatement.setInt(1, user.getID());
       preparedStatement.setString(2, user.geteMail());
-      preparedStatement.setString(3, user.getPassword());
-      preparedStatement.setString(4, user.getFirstName());
-      preparedStatement.setString(5, user.getLastName());
+      preparedStatement.setString(3, user.getFirstName());
+      preparedStatement.setString(4, user.getLastName());
+      preparedStatement.setString(5, user.getPassword());
+
       preparedStatement.executeUpdate();
 
     } catch(SQLException e){
@@ -33,21 +34,6 @@ public class UserRepository {
     }
   }
 
-  public void validateLogin(String eMail, String password) {
-    getConnection();
-    try {
-      //Tjekker igennem alle i tabellen hvis der er noget med den specifikke mail
-      final String QUERY = "SELECT * FROM registeredusers WHERE eMail = ? AND password = ?";
-      PreparedStatement preparedStatement = getConnection().prepareStatement(QUERY);
-      User user = new User();
-      preparedStatement.setString(1,user.geteMail());
-      preparedStatement.setString(2,user.getPassword());
-      preparedStatement.executeUpdate();
-    } catch (SQLException e) {
-      System.out.println("Could not create");
-      e.printStackTrace();
-    }
-  }
   public User findUser(String eMail){
     //get connection from ConnectionManager
     getConnection();
@@ -84,7 +70,6 @@ public class UserRepository {
       PreparedStatement preparedStatement = getConnection().prepareStatement(sql);
       ResultSet rs = preparedStatement.executeQuery(sql);
       while (rs.next()) {
-        eMail = rs.getString(user.geteMail());
         password = rs.getString(user.getPassword());
       }
     } catch (SQLException e) {
