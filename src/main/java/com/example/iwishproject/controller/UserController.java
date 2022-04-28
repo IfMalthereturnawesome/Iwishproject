@@ -27,7 +27,6 @@ public class UserController {
     return "tilmeld";
   }
 
-
   @PostMapping("/tilmeld")
   public String tilmeld(@RequestParam("eMail") String eMail,
                         @RequestParam("password") String password,
