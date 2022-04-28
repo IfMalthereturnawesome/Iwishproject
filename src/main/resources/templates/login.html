@@ -5,8 +5,9 @@
     <title>Title</title>
 </head>
 <body>
+${error}
 <form
-        action="/login"
+        action="${pageContext.request.contextPath }/login"
         method="post">
     <div class="container">
         <label>E-Mail</label>
