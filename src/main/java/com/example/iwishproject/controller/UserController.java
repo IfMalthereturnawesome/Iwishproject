@@ -46,21 +46,19 @@ public class UserController {
   }
 
   @PostMapping("/login")
-  public String loginValidate(@ModelAttribute("user") User user,
-                              @RequestParam("eMail") String eMail,
+  public String loginValidate(@RequestParam("eMail") String eMail,
                               @RequestParam("password") String password,
-                              HttpSession session,
-                              Model model){
+                              HttpSession session){
     UserRepository userRepository = new UserRepository();
     User loginUser = userRepository.findUser(eMail);
     if (loginUser != null){
-      boolean validPassword = userRepository.passwordCheck(loginUser,password);
-
-      if (validPassword){
-        Cookie cookie = new Cookie("id",String.valueOf(loginUser.getID()));
-        session.setAttribute("id",cookie);
+      if (loginUser.getPassword().equals(password)){
+        session.setAttribute("id",eMail);
+        session.setAttribute("pwd",password);
+        return "ønskeliste";
       }
     }
-return "ønskeliste";
+    return "login";
   }
-}
+  }
+
