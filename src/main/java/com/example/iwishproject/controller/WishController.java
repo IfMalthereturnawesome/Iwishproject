@@ -4,10 +4,7 @@ import com.example.iwishproject.model.Wish;
 import com.example.iwishproject.repository.IWishRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -37,13 +34,7 @@ public String onskeliste(){
     return "onskeliste";
 }
 
-@GetMapping("/d")
-    public String onsker(Model model){
-
-      return viewPage(model);
-  }
-
-  @GetMapping("/onsker")
+  @RequestMapping("/onsker")
   public String viewPage(Model model){
     List<Wish> onsker = iWishRepository.findAllWishes();
     model.addAttribute("onske",onsker);
