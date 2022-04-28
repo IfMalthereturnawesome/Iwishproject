@@ -22,12 +22,12 @@ public class WishController {
 public String omOs(){
     return "omos";
 }
-@GetMapping("/ønskeliste")
+@GetMapping("/onskeliste")
 public String onskeliste(){
-    return "ønskeliste";
+    return "onskeliste";
 }
 
-  @PostMapping("/tilføjønske")
+  @PostMapping("/tilføjonske")
   public String addWish(@RequestParam("title") String title,
                            @RequestParam("description") String description,
                            @RequestParam("price") double price,
@@ -40,15 +40,15 @@ public String onskeliste(){
     newWish.setLink(link);
     iWishRepository.addWish(newWish);
 
-    return "redirect:/ønskeliste";
+    return "redirect:/onskeliste";
   }
 
-  @PostMapping("/sletønske")
+  @PostMapping("/sletonske")
   public String deletePokemon(@RequestParam("id") int id){
     IWishRepository iWishRepository = new IWishRepository();
     iWishRepository.deleteWish(id);
 
-    return "redirect:/ønskeliste";
+    return "redirect:/onskeliste";
   }
 
 }
