@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+  <meta charset="UTF-8">
+  <title>Ønsker</title>
+  <link th:href="@{/CSS/main.css}" rel="stylesheet"/>
+  <link rel="stylesheet" href="../static/CSS/main.css">
+  <link th:href="@{/CSS/NavBar.css}" rel="stylesheet"/>
+  <link rel="stylesheet" href="../static/CSS/NavBar.css">
+</head>
+<body>
+<div th:replace="kontonav.fragment"></div>
+
+<h1 class="header">
+  Ønsker
+</h1>
+<table>
+  <thead>
+  <tr>
+    <th scope="col">
+      Navn
+    </th>
+    <th scope="col">
+      Beskrivelse
+    </th>
+    <th scope="col">
+      Pris
+    </th>
+    <th scope="col">
+      Link
+    </th>
+    <th scope="col">Rediger</th>
+    <th scope="col">Slet</th>
+
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="pokemon: ${pokemons}">
+
+    <td >
+      <a th:href="@{/{id}(id=${pokemon.id})}" class="individual"  th:text="${pokemon.name}" target="_blank" ></a>
+    </td>
+    <td >
+      <a th:href="@{/{id}(id=${pokemon.id})}" class="individual"  th:text="${pokemon.speed}" target="_blank" ></a>
+    </td>
+    <td >
+      <a th:href="@{/{id}(id=${pokemon.id})}" class="individual"  th:text="${pokemon.speed}" target="_blank" ></a>
+    </td>
+    <td >
+      <a th:href="@{/{id}(id=${pokemon.id})}" class="individual"  th:text="${pokemon.speed}" target="_blank" ></a>
+    </td>
+
+
+    </td>
+    <td class="row-update"><a class="link-row link" th:href="@{/edit/{id}(id=${pokemon.id})}">Rediger</a></td>
+    <td class="row-delete"><a class="link-row link" th:href="@{/delete/{id}(id=${pokemon.id})}">Slet</a></td>
+
+  </tr>
+  </tbody>
+
+</table>
+
+<footer>
+  <div th:replace="footer.fragment"></div>
+</footer>
+</body>
+</html>

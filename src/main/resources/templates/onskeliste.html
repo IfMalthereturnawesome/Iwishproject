@@ -11,6 +11,42 @@
 <body>
     <div th:replace="kontonav.fragment"></div>
 
+    <h1 class="header">
+        Ønskelister
+    </h1>
+    <table>
+        <thead>
+        <tr>
+            <th scope="col">
+                Navn
+            </th>
+            <th scope="col">
+                Beskrivelse
+            </th>
+            <th scope="col">Rediger</th>
+            <th scope="col">Slet</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="pokemon: ${pokemons}">
+
+            <td >
+                <a th:href="@{/{id}(id=${pokemon.id})}" class="individual"  th:text="${pokemon.name}" target="_blank" ></a>
+            </td>
+            <td >
+                <a th:href="@{/{id}(id=${pokemon.id})}" class="individual"  th:text="${pokemon.speed}" target="_blank" ></a>
+            </td>
+
+            </td>
+            <td class="row-update"><a class="link-row link" th:href="@{/edit/{id}(id=${pokemon.id})}">edit</a></td>
+            <td class="row-delete"><a class="link-row link" th:href="@{/delete/{id}(id=${pokemon.id})}">delete</a></td>
+
+        </tr>
+        </tbody>
+
+    </table>
+
     <footer>
         <div th:replace="footer.fragment"></div>
     </footer>
