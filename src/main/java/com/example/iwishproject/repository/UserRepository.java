@@ -38,7 +38,7 @@ public class UserRepository {
     //get connection from ConnectionManager
     getConnection();
     final String QUERY = "SELECT * FROM registeredusers WHERE eMail = '"+inputEMail+"'";
-    User selectedUser = null;
+    User loginUser = null;
       try {
         Statement statement = getConnection().createStatement();
         ResultSet resultSet = statement.executeQuery(QUERY);
@@ -49,14 +49,14 @@ public class UserRepository {
           String firstName = resultSet.getString(3);
           String lastName = resultSet.getString(4);
           String password = resultSet.getString(5);
-          selectedUser = new User(ID,eMail,password,firstName,lastName);
+          loginUser = new User(ID,eMail,password,firstName,lastName);
         }
 
     } catch (SQLException e) {
       System.out.println("Could not find user");
       e.printStackTrace();
     }
-    return selectedUser; //User not found
+    return loginUser; //User not found
   }
 
   public boolean passwordCheck(User user, String password){

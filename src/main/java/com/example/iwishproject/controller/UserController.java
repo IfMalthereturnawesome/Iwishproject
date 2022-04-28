@@ -55,7 +55,7 @@ public class UserController {
     boolean passwordValid = userRepository.passwordCheck(loginUser, password);
     if (passwordValid) {
       session.setAttribute("user", loginUser);
-      return "redirect:/ønskeliste";
+      return "redirect:/onskeliste";
     } else {
       model.addAttribute("loginFailed", "loginFailed");
       return "login";
