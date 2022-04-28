@@ -62,6 +62,15 @@ body {
 
 }
 
+.mainheader-omos {
+    width: 100%;
+    height: 870px;
+    display: flex;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #2E7CC7;
+}
+
 .text-section {
     background-color: #2E7CC7;
 }
