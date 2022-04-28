@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+    <head>
+        <meta charset="UTF-8">
+        <title>ønskeliste</title>
+        <link th:href="@{/CSS/main.css}" rel="stylesheet"/>
+        <link rel="stylesheet" href="../static/CSS/main.css">
+        <link th:href="@{/CSS/NavBar.css}" rel="stylesheet"/>
+        <link rel="stylesheet" href="../static/CSS/NavBar.css">
+    </head>
 <body>
+    <div th:replace="nav.fragment"></div>
+
+    <footer>
+        <div th:replace="footer.fragment"></div>
+    </footer>
 
 </body>
 </html>
