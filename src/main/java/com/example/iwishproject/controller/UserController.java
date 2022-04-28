@@ -49,9 +49,13 @@ public class UserController {
                               HttpSession session,
                               ModelMap modelMap){
     UserRepository userRepository = new UserRepository();
-  if (userRepository.passwordCheck(userRepository.findUser(eMail),password)){
-    return "redirect:/index";
-  }else
-    return "redirect:/tilmeld";
+    User loginUser = userRepository.findUser(eMail);
+    if (loginUser.geteMail().equalsIgnoreCase(eMail) && loginUser.getPassword().equals(password)){
+      session.setAttribute("email", eMail);
+      return "ønskeliste";
+    }else{
+      modelMap.put("Error","Wrong password");
+      return "login";
+    }
   }
 }
