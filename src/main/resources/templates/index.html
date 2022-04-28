@@ -14,13 +14,13 @@
     <nav class="navi-section">
         <div class="navbar" id="navbar">
             <div class="logo-left">
-                <a href="index.html"><img th:src="@{../CSS/images/Logo-250x250.png}" class="small-nav-logo" alt="logo"
+                <a href="/"><img th:src="@{../CSS/images/Logo-250x250.png}" class="small-nav-logo" alt="logo"
                                           src="../static/CSS/images/Logo-250x250.png"/></a>
             </div>
-            <a href="hvordan.html">Hvordan?</a>
-            <a href="omos.html">Om os</a>
-            <a href="tilmeld.html">Tilmeld</a>
-            <a href="login.html" class="login-button">Log ind</a>
+            <a href="../hvordan">Hvordan?</a>
+            <a href="../omos">Om os</a>
+            <a href="../tilmeld">Tilmeld</a>
+            <a href="../login" class="login-button">Log ind</a>
         </div>
     </nav>
     <div class="mainheader">
@@ -83,39 +83,58 @@
 </section>
 <footer>
     <div class="footer-content">
-        <div class="logo">
-            <a href="index.html"><img class="logo-nav" th:src="@{../CSS/images/Logo-250x250.png}" alt="logo"/></a>
+        <div class="left-footer-container">
+            <h3 class="footer-header">
+                Betingelser
+            </h3>
+            <ol class="ol-list">
+                <li class="list">
+                    Cookiepolitik
+                </li>
+                <li class="list">
+                    Brugervilkår
+                </li>
+                <li class="list">
+                    Privatlivspolitik
+                </li>
+            </ol>
+            <div class="logo">
+                <a href="index.html"><img class="logo-nav" th:src="@{../CSS/images/Logo-250x250.png}" alt="logo"/></a>
+            </div>
         </div>
+
         <nav class="navigation">
-            <ul class="list">
-                <a href="index.html">
-                    <li class="li-nav">
+
+            <ol class="ol-list">
+                <a href="/">
+                    <li class="li-nav list">
                         Hjem
                     </li>
                 </a>
-                <a href="hvordan.html">
-                    <li class="li-nav">
+                <a href="../hvordan">
+                    <li class="li-nav list">
                         Hvordan?
                     </li>
                 </a>
-                <a href="omos.html">
-                    <li class="li-nav">
+                <a href="../omos">
+                    <li class="li-nav list">
                         Om os
                     </li>
                 </a>
-                <a href="tilmeld.html">
-                    <li class="li-nav">
+                <a href="../tilmeld">
+                    <li class="li-nav list">
                         Tilmeld
                     </li>
                 </a>
-                <a href="login.html">
-                    <li class="li-nav">
+                <a href="../login">
+                    <li class="li-nav list">
                         Log Ind
                     </li>
                 </a>
-            </ul>
+            </ol>
         </nav>
         <div class="socials">
+
             <div class="facebook">
                 <a href="https://www.facebook.com/" target="_blank"><img class="logo-nav"
                                                                                  th:src="@{../CSS/images/2021_Facebook_icon.svg.png}"
