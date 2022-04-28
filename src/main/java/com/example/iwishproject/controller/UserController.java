@@ -18,12 +18,12 @@ import javax.servlet.http.HttpSession;
 public class UserController {
 
   @GetMapping("/login")
-  public String login(){
+  public String login() {
     return "login";
   }
 
   @GetMapping("/tilmeld")
-  public String tilmeldSide(){
+  public String tilmeldSide() {
     return "tilmeld";
   }
 
@@ -32,7 +32,7 @@ public class UserController {
   public String tilmeld(@RequestParam("eMail") String eMail,
                         @RequestParam("password") String password,
                         @RequestParam("firstName") String firstName,
-                        @RequestParam("lastName") String lastName){
+                        @RequestParam("lastName") String lastName) {
 
     UserRepository userRepository = new UserRepository();
     User newUser = new User();
@@ -48,18 +48,18 @@ public class UserController {
   @PostMapping("/login")
   public String loginValidate(@RequestParam("eMail") String eMail,
                               @RequestParam("password") String password,
-                              HttpSession session){
+                              HttpSession session,
+                              Model model) {
     UserRepository userRepository = new UserRepository();
     User loginUser = userRepository.findUser(eMail);
-    if (loginUser != null){
-      if (loginUser.getPassword().equals(password)){
-        session.setAttribute("id",eMail);
-        session.setAttribute("pwd",password);
-        return "ønskeliste";
-      }
-      return "ønskeliste";
+    boolean passwordValid = userRepository.passwordCheck(loginUser, password);
+    if (passwordValid) {
+      session.setAttribute("user", loginUser);
+      return "redirect:/ønskeliste";
+    } else {
+      model.addAttribute("loginFailed", "loginFailed");
+      return "login";
     }
-    return "login";
   }
-  }
+}
 

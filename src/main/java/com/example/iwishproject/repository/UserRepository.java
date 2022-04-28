@@ -37,32 +37,26 @@ public class UserRepository {
   public User findUser(String inputEMail){
     //get connection from ConnectionManager
     getConnection();
+    final String QUERY = "SELECT * FROM registeredusers WHERE eMail = '"+inputEMail+"'";
+    User selectedUser = null;
+      try {
+        Statement statement = getConnection().createStatement();
+        ResultSet resultSet = statement.executeQuery(QUERY);
 
-    try {
-
-      final String QUERY = "SELECT * FROM registeredusers WHERE eMail = "+inputEMail;
-
-      getConnection();
-      System.out.println("Forbundet til DB");
-      Statement statement = getConnection().createStatement();
-      ResultSet resultSet = statement.executeQuery(QUERY);
-      // Læser fra tabel
-      while(resultSet.next()){
-        //Giver informationerne fra tabel til attributer
-        int id = resultSet.getInt(1);
-        String eMail = resultSet.getString(2);
-        String password = resultSet.getString(3);
-        String firstName = resultSet.getString(4);
-        String lastName = resultSet.getString(5);
-        //Tilføjer dem til min constructor, for at lave Ønske objekter samt tilføjer dem til min arraylist
-        return new User(id,eMail,password,firstName,lastName);
-      }
+        while (resultSet.next()) {
+          int ID = resultSet.getInt(1);
+          String eMail = resultSet.getString(2);
+          String firstName = resultSet.getString(3);
+          String lastName = resultSet.getString(4);
+          String password = resultSet.getString(5);
+          selectedUser = new User(ID,eMail,password,firstName,lastName);
+        }
 
     } catch (SQLException e) {
-      System.out.println("Could not create connection");
+      System.out.println("Could not find user");
       e.printStackTrace();
     }
-    return null; //User not found
+    return selectedUser; //User not found
   }
 
   public boolean passwordCheck(User user, String password){
