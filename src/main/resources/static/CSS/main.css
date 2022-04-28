@@ -375,6 +375,89 @@ background-color:#EDFBFF;
     padding: 10px;
 }
 
+.form-control {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    flex-wrap: nowrap;
+}
+
+.input-field {
+    font-size: 16px;
+    line-height: 20px;
+    padding: 6px 12px;
+    width: 100%;
+    min-height: 36px;
+    border: unset;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    margin-top: 10px;
+    outline-color: rgb(84 105 212 / 0.5);
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(60, 66, 87, 0.16) 0px 0px 0px 1px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+
+}
+
+.submit-button {
+    margin-top: 25px;
+    color: #f1efef;
+    font-size: 22px;
+    line-height: 1;
+    background-color: #2E7CC7;
+    font-weight: bold;
+    padding: 16px;
+    margin-right: 30%;
+    font-family: Inter, sans-serif;
+    border: 0;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    transition-duration: 0.3s;
+    color: #171616;
+    background-color: #EDFBFF;
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+.select-form {
+    font-size: 16px;
+    line-height: 20px;
+    padding: 6px 12px;
+    width: 100%;
+    min-height: 36px;
+    border: unset;
+    border-radius: 4px;
+    outline-color: rgb(84 105 212 / 0.5);
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(60, 66, 87, 0.16) 0px 0px 0px 1px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+}
+.header {
+    font-weight: 600;
+    font-style: normal;
+    text-transform: capitalize;
+    letter-spacing: 0.8px;
+    font-family: Inter, sans-serif;
+    font-size: 16px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #2c2a2a;
+    margin-bottom: 20px;
+}
+
 
 
 

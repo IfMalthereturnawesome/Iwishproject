@@ -12,21 +12,22 @@
 <div th:replace="nav.fragment"></div>
 <form
         action="/tilmeld"
-        method="post">
+        method="post"
+        class="form-control">
     <div class="container">
-        <label>E-Mail</label>
-        <input type="text" placeholder="Enter E-Mail" name="eMail" required>
+        <label class="header">E-Mail</label>
+        <input class="input-field" type="text" placeholder="Enter E-Mail" name="eMail" required>
 
-        <label>First Name</label>
-        <input type="text" placeholder="Enter First Name" name="firstName" required>
+        <label class="header">First Name</label>
+        <input class="input-field" type="text" placeholder="Enter First Name" name="firstName" required>
 
-        <label>Last Name</label>
-        <input type="text" placeholder="Enter Last Name" name="lastName">
+        <label class="header">Last Name</label>
+        <input class="input-field" type="text" placeholder="Enter Last Name" name="lastName">
 
-        <label>Password</label>
-        <input type="password" placeholder="Enter Password" name="password">
+        <label class="header">Password</label>
+        <input class="input-field" type="password" placeholder="Enter Password" name="password">
 
-        <button type="submit">Sign Up</button>
+        <button class="submit-button" type="submit">Tilmeld</button>
     </div>
 </form>
 
