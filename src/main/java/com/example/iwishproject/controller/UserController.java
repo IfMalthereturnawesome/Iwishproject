@@ -5,11 +5,13 @@ import com.example.iwishproject.model.Wish;
 import com.example.iwishproject.repository.IWishRepository;
 import com.example.iwishproject.repository.UserRepository;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -44,18 +46,21 @@ public class UserController {
   }
 
   @PostMapping("/login")
-  public String loginValidate(@RequestParam("eMail") String eMail,
+  public String loginValidate(@ModelAttribute("user") User user,
+                              @RequestParam("eMail") String eMail,
                               @RequestParam("password") String password,
                               HttpSession session,
-                              ModelMap modelMap){
+                              Model model){
     UserRepository userRepository = new UserRepository();
     User loginUser = userRepository.findUser(eMail);
-    if (loginUser.geteMail().equalsIgnoreCase(eMail) && loginUser.getPassword().equals(password)){
-      session.setAttribute("email", eMail);
-      return "ønskeliste";
-    }else{
-      modelMap.put("Error","Wrong password");
-      return "login";
+    if (loginUser != null){
+      boolean validPassword = userRepository.passwordCheck(loginUser,password);
+
+      if (validPassword){
+        Cookie cookie = new Cookie("id",String.valueOf(loginUser.getID()));
+        session.setAttribute("id",cookie);
+      }
     }
+return "ønskeliste";
   }
 }
