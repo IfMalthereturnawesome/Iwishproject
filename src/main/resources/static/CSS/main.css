@@ -219,7 +219,7 @@ h2 {
 
 .logo-nav {
     width: 100%;
-    height: auto;
+    height: 90px;
     display: flex;
     justify-content: center;
 }
@@ -291,7 +291,7 @@ footer {
 
 .logo img {
     width: 150px;
-    height: 150px;
+    height: 90px;
 }
 .list {
     display: flex;
@@ -315,7 +315,16 @@ footer {
     display: flex;
     flex-direction: row-reverse;
 }
+.ol-list{
+    list-style: none;
 
+}
+li.list {
+    padding-left: 0;
+    padding-right: 0;
+    display: block;
+    align-items: start;
+}
 
 
 
