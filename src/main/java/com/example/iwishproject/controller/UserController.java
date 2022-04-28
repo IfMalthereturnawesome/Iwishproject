@@ -57,6 +57,7 @@ public class UserController {
         session.setAttribute("pwd",password);
         return "ønskeliste";
       }
+      return "ønskeliste";
     }
     return "login";
   }
