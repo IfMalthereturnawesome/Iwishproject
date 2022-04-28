@@ -37,13 +37,14 @@ public String onskeliste(){
     return "onskeliste";
 }
 
-/*@GetMapping("/onsker")
-    public String onsker(){
-      return "onsker";
-  }*/
+@GetMapping("/d")
+    public String onsker(Model model){
 
-  @GetMapping("/onsker/{id}")
-  public String viewPage(Model model, @PathVariable("id") int id){
+      return viewPage(model);
+  }
+
+  @GetMapping("/onsker")
+  public String viewPage(Model model){
     List<Wish> onsker = iWishRepository.findAllWishes();
     model.addAttribute("onske",onsker);
 

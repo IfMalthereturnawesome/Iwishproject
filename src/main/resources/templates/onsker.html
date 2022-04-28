@@ -36,25 +36,27 @@
   </tr>
   </thead>
   <tbody>
-  <tr th:each="pokemon: ${pokemons}">
+  <tr th:each="onsker: ${onske}">
 
     <td >
-      <a th:href="@{/{id}(id=${pokemon.id})}" class="individual"  th:text="${pokemon.name}" target="_blank" ></a>
+      <a th:href="@{/{id}(id=${onsker.id})}" class="individual"  th:text="${onsker.id}" target="_blank" ></a>
     </td>
     <td >
-      <a th:href="@{/{id}(id=${pokemon.id})}" class="individual"  th:text="${pokemon.speed}" target="_blank" ></a>
+      <a th:href="@{/{id}(id=${onsker.id})}" class="individual"  th:text="${onsker.title}" target="_blank" ></a>
     </td>
     <td >
-      <a th:href="@{/{id}(id=${pokemon.id})}" class="individual"  th:text="${pokemon.speed}" target="_blank" ></a>
+      <a th:href="@{/{id}(id=${onsker.id})}" class="individual"  th:text="${onsker.description}" target="_blank" ></a>
     </td>
     <td >
-      <a th:href="@{/{id}(id=${pokemon.id})}" class="individual"  th:text="${pokemon.speed}" target="_blank" ></a>
+      <a th:href="@{/{id}(id=${onsker.id})}" class="individual"  th:text="${onsker.price}" target="_blank" ></a>
+    </td>
+    <td >
+      <a th:href="@{/{id}(id=${onsker.id})}" class="individual"  th:text="${onsker.link}" target="_blank" ></a>
     </td>
 
-
     </td>
-    <td class="row-update"><a class="link-row link" th:href="@{/edit/{id}(id=${pokemon.id})}">Rediger</a></td>
-    <td class="row-delete"><a class="link-row link" th:href="@{/delete/{id}(id=${pokemon.id})}">Slet</a></td>
+    <td class="row-update"><a class="link-row link" th:href="@{/edit/{id}(id=${onsker.id})}">Rediger</a></td>
+    <td class="row-delete"><a class="link-row link" th:href="@{/delete/{id}(id=${onsker.id})}">Slet</a></td>
 
   </tr>
   </tbody>
