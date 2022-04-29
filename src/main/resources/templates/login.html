@@ -11,22 +11,24 @@
 <body>
 <div th:replace="nav.fragment"></div>
 <div class="full-page">
-<form
-        action="/login"
-        method="post"
-        class="form-control">
-    <div class="container-small-page">
-        <label class="header">E-Mail</label>
-        <input class="input-field" type="text" placeholder="Enter E-Mail" name="eMail" required>
+    <form
+            action="/login"
+            method="post"
+            class="form-control">
+        <div class="container-small-page">
+            <label class="header">E-Mail</label>
+            <input class="input-field" type="text" placeholder="Enter E-Mail" name="eMail" required>
 
-        <label class="header">Password</label>
-        <input class="input-field" type="password" placeholder="Enter Password" name="password">
+            <label class="header">Password</label>
+            <input class="input-field" type="password" placeholder="Enter Password" name="password">
 
-        <button class="submit-button" type="submit">Log ind</button>
-    </div>
+            <button class="submit-button-2" type="submit">Log ind</button>
+        </div>
 
-</form>
-
+    </form>
 </div>
+<footer>
+    <div th:replace="footer.fragment"></div>
+</footer>
 </body>
 </html>
