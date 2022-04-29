@@ -64,15 +64,6 @@ body {
 
 }
 
-.mainheader-omos {
-    width: 100%;
-    height: 870px;
-    display: flex;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-color: #2E7CC7;
-}
-
 .text-section {
     background-color: #2E7CC7;
 }
@@ -88,7 +79,7 @@ body {
 
 .aboutus {
     width: 100%;
-    height: 400px;
+    height: 350px;
     display: flex;
     background-size: contain;
     background-repeat: no-repeat;
@@ -156,6 +147,23 @@ body {
     margin-bottom: 20px;
 
     font-family: Inter, sans-serif;
+}
+
+.article-header-omos {
+    display: flex;
+    margin-top: 60px;
+    justify-content: start;
+    color: #000000;
+    font-size: 50px;
+    line-height: 1;
+    font-weight: bold;
+    margin-bottom:70px;
+    background-color: #f1efef;
+    width: 275px;
+    height: 60px;
+    font-family: Inter, sans-serif;
+    padding-left: 10px;
+    padding-top: 5px;
 }
 
 .article-text {
@@ -234,6 +242,13 @@ h2 {
     margin-right: 100px;
     padding-left: 50%;
     padding-right: 5%;
+
+}
+.wrapper-omos {
+    margin-left: 100px;
+    margin-right: 100px;
+    padding-left: 10%;
+    padding-right: 10%;
 
 }
 
