@@ -22,6 +22,17 @@ body {
     src: url("/font/Inter-SemiBold.ttf") format("ttf");
     src: url("/font/Inter-Thin.ttf") format("ttf");
 }
+.h4-header {
+    margin-bottom: 3px;
+}
+.h4-header::after {
+    content: " kr";
+    display: inline;
+    justify-content: start;
+    color: #2f2f2d;
+    font-size: 16px;
+    line-height: 1;
+}
 
 .container {
     width: 1200px;
@@ -465,6 +476,22 @@ li.list {
     border-radius: 5px;
 
 }
+.button-small {
+    color: #EDFBFE;
+    background-color: #FECF63;
+    font-weight: 900;
+    padding: 5px;
+    margin-top: -10px;
+    font-family: Inter, sans-serif;
+    cursor: pointer;
+    border-radius: 2px;
+    border: 0;
+    font-size: 14px;
+    line-height: 1;
+}
+.button {
+    margin-bottom: 5px;
+}
 
 .submit-button-2 {
     margin-top: 25px;
@@ -530,50 +557,7 @@ li.list {
     color: #EDFBFE;
     margin-bottom: 20px;
 }
-th {
-    font-weight: 900;
-    font-style: normal;
-    text-transform: capitalize;
-    letter-spacing: 0.8px;
-    font-size: 16px;
-    text-align: center;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    background-color: #1C3D66;
-    color: white;
-}
 
-
-td {
-    text-align: center;
-    font-size: 12px;
-    border: none;
-    padding: 4px 8px;
-    font-weight: 700;
-}
-
-tr {
-    font-size: 14px;
-    width: 100%;
-}
-tr:nth-child(even) {
-    background-color: #ECE5E5;
-}
-
-tr:nth-child(odd) {
-    background-color: #fcfafa;
-}
-
-table {
-    width: 100%;
-    align-items: center;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-}
-th:hover {
-    background-color: #112844;
-    border-radius: 2px;
-    transition-duration: .3s;
-}
 .row-update {
     color: #2f2f2d;
     font-size: 22px;
@@ -673,26 +657,22 @@ th:hover {
 .tag {
     background: #cccccc;
     border-radius: 2px;
-    font-size: 14px;
+    font-size: 13px;
+    font-weight: bold;
     margin-bottom: 8px;
     color: #fff;
-    padding: 2px 10px;
+    padding: 3px 6px;
     text-transform: uppercase;
     cursor: pointer;
 }
 .tag-teal {
     background-color: #2D7BC6;
 }
-.tag-purple {
-    background-color: #5e76bf;
-}
-.tag-pink {
-    background-color: #cd5b9f;
-}
+
 
 .card-body p {
-    font-size: 16px;
-    margin: 0 0 40px;
+    font-size: 14px;
+    margin: 0 0 auto;
 }
 
 
