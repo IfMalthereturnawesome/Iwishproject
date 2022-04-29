@@ -594,6 +594,62 @@ th:hover {
 
 }
 
+.container-cards{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
 
+}
+
+.container-cards .card {
+    flex: 1;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.card-header img {
+
+    height: 200px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+    min-height: 150px;
+    background-color: #f8f4f4;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.tag {
+    background: #cccccc;
+    border-radius: 50px;
+    font-size: 12px;
+    margin-top: 1px;
+    margin-bottom: 5px;
+    color: #fff;
+    padding: 2px 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.tag-teal {
+    background-color: #47bcd4;
+}
+.tag-purple {
+    background-color: #5e76bf;
+}
+.tag-pink {
+    background-color: #cd5b9f;
+}
+
+.card-body p {
+    font-size: 16px;
+    margin: 0 0 40px;
+}
 
 

@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
   <meta charset="UTF-8">
@@ -15,56 +14,25 @@
 <h1 class="header">
   Ønsker
 </h1>
-<table>
-  <thead>
-  <tr>
-    <th scope="col">
-      #
-    </th>
-    <th scope="col">
-      Navn
-    </th>
-    <th scope="col">
-      Beskrivelse
-    </th>
-    <th scope="col">
-      Pris
-    </th>
-    <th scope="col">
-      Link
-    </th>
-    <th scope="col">Rediger</th>
-    <th scope="col">Slet</th>
-
-  </tr>
-  </thead>
-  <tbody>
-  <tr th:each="onsker: ${onske}">
-
-    <td >
-      <a th:href="@{/{id}(id=${onsker.id})}" class="individual"  th:text="${onsker.id}" target="_blank" ></a>
-    </td>
-    <td >
-      <a th:href="@{/{id}(id=${onsker.id})}" class="individual"  th:text="${onsker.title}" target="_blank" ></a>
-    </td>
-    <td >
-      <a th:href="@{/{id}(id=${onsker.id})}" class="individual"  th:text="${onsker.description}" target="_blank" ></a>
-    </td>
-    <td >
-      <a th:href="@{/{id}(id=${onsker.id})}" class="individual"  th:text="${onsker.price}" target="_blank" ></a>
-    </td>
-    <td >
-      <a th:href="@{/{id}(id=${onsker.id})}" class="individual"  th:text="${onsker.link}" target="_blank" ></a>
-    </td>
-
-    </td>
-    <td class="row-update"><a class="link-row link" th:href="@{/edit/{id}(id=${onsker.id})}">Rediger</a></td>
-    <td class="row-delete"><a class="link-row link" th:href="@{/delete/{id}(id=${onsker.id})}">Slet</a></td>
-
-  </tr>
-  </tbody>
-
-</table>
+<div class="container-cards">
+  <div th:each="onsker : ${onske}">
+    <div class="card">
+      <div class="card-header">
+        <img src="https://c0.wallpaperflare.com/preview/483/210/436/car-green-4x4-jeep.jpg" alt="rover" />
+      </div>
+      <div class="card-body">
+        <span class="tag tag-teal" th:text="${onsker.title}">title</span>
+        <h4 th:text="${onsker.price}">
+        </h4>
+        <p th:text="${onsker.description}">
+        </p>
+        <div class="button">
+          <button><a href="../{link}" class="button-link">Link</a> </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <footer>
   <div th:replace="footer.fragment"></div>
