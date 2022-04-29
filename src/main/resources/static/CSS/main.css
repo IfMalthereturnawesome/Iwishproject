@@ -23,14 +23,22 @@ body {
     src: url("/font/Inter-Thin.ttf") format("ttf");
 }
 .h4-header {
-    margin-bottom: 3px;
+    margin-bottom: 5px;
 }
 .h4-header::after {
-    content: " kr";
+    content: ",-";
+    display: inline;
+    justify-content: start;
+    color: #2D7BC6;
+    font-size: 16px;
+    line-height: 1;
+}
+.h4-header::before {
+    content: "DKK ";
     display: inline;
     justify-content: start;
     color: #2f2f2d;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 1;
 }
 
@@ -477,17 +485,15 @@ li.list {
 
 }
 .button-small {
-    color: #EDFBFE;
-    background-color: #FECF63;
-    font-weight: 900;
-    padding: 5px;
-    margin-top: -10px;
-    font-family: Inter, sans-serif;
-    cursor: pointer;
+    background: #FFD75E;
     border-radius: 2px;
-    border: 0;
-    font-size: 14px;
-    line-height: 1;
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #fff;
+    padding: 3px 6px;
+    text-transform: uppercase;
+    cursor: pointer;
 }
 .button {
     margin-bottom: 5px;
@@ -647,7 +653,7 @@ li.list {
     flex-direction: column;
     align-items: flex-start;
     padding: 10px;
-    min-height: 150px;
+    min-height: 175px;
     max-width: 300px;
     background-color: #EDFBFF;
     border-bottom-left-radius: 10px;
