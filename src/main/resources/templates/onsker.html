@@ -16,28 +16,6 @@
     <h1 class="article-header-omos">
         Ønsker
     </h1>
-    <form
-            action="/tilføjonske"
-            method="post"
-            class="form-control">
-        <div class="container-form">
-            <label class="header">Title</label>
-            <input class="input-field" type="text" placeholder="Enter title" name="title" required>
-
-            <label class="header">Beskrivelse</label>
-            <input class="input-field" type="text" placeholder="Enter description" name="description" required>
-
-            <label class="header">Pris</label>
-            <input class="input-field" type="text" placeholder="Enter price" name="price">
-
-            <label class="header">Link</label>
-            <input class="input-field" type="text" placeholder="Enter link" name="link">
-
-            <button class="submit-button" type="submit">Tilføj ønske</button>
-        </div>
-
-    </form>
-
     <div class="container-cards">
         <div th:each="onsker : ${onske}">
             <div class="card">
@@ -58,6 +36,27 @@
 
             </div>
         </div>
+        <form
+                action="/tilføjonske"
+                method="post"
+                class="form-control">
+            <div class="container-form-small">
+                <label class="header">Navn</label>
+                <input class="input-field" type="text" placeholder="Enter title" name="title" required>
+
+                <label class="header">Beskrivelse</label>
+                <input class="input-field" type="text" placeholder="Enter description" name="description" required>
+
+                <label class="header">Pris</label>
+                <input class="input-field" type="text" placeholder="Enter price" name="price">
+
+                <label class="header">Link</label>
+                <input class="input-field" type="text" placeholder="Enter link" name="link">
+
+                <button class="submit-button-small" type="submit">Tilføj ønske</button>
+            </div>
+
+        </form>
     </div>
 </div>
 <footer>
