@@ -23,7 +23,7 @@ public class IWishRepository {
     ArrayList<Wish> wishes = new ArrayList<>();
     try {
       Statement statement = getConnection().createStatement();
-      final String SQL_QUERY = "SELECT * FROM wishes";
+      final String SQL_QUERY = "SELECT * FROM createwish";
       ResultSet resultSet = statement.executeQuery(SQL_QUERY);
 
       // Læser fra tabel
@@ -56,14 +56,14 @@ public class IWishRepository {
     try{
       //prep statement
       PreparedStatement preparedStatement = getConnection().prepareStatement(
-          "INSERT INTO wishes(id, title, description, price, link) " +
+          "INSERT INTO createwish(wishID, title, description, price, link) " +
               "VALUES (?, ?, ?, ?, ?)");
       //set attributer
       preparedStatement.setInt(1,wish.getId());
       preparedStatement.setString(2, wish.getTitle());
       preparedStatement.setString(3, wish.getDescription());
       preparedStatement.setDouble(4, wish.getPrice());
-      preparedStatement.setString(1, wish.getLink());
+      preparedStatement.setString(5, wish.getLink());
       //execute statement
       preparedStatement.executeUpdate();
     }

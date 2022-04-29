@@ -55,7 +55,7 @@ public String onskeliste(){
     newWish.setLink(link);
     iWishRepository.addWish(newWish);
 
-    return "redirect:/onskeliste";
+    return "redirect:/onsker";
   }
 
   @PostMapping("/sletonske")

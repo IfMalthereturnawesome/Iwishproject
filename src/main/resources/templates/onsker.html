@@ -1,41 +1,65 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
-  <meta charset="UTF-8">
-  <title>Ønsker</title>
-  <link th:href="@{/CSS/main.css}" rel="stylesheet"/>
-  <link rel="stylesheet" href="../static/CSS/main.css">
-  <link th:href="@{/CSS/NavBar.css}" rel="stylesheet"/>
-  <link rel="stylesheet" href="../static/CSS/NavBar.css">
+    <meta charset="UTF-8">
+    <title>Ønsker</title>
+    <link th:href="@{/CSS/main.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="../static/CSS/main.css">
+    <link th:href="@{/CSS/NavBar.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="../static/CSS/NavBar.css">
 </head>
-<body>
+<body class="konto">
 <div th:replace="kontonav.fragment"></div>
 
-<h1 class="header">
-  Ønsker
-</h1>
-<div class="container-cards">
-  <div th:each="onsker : ${onske}">
-    <div class="card">
-      <div class="card-header">
-        <img src="https://c0.wallpaperflare.com/preview/483/210/436/car-green-4x4-jeep.jpg" alt="rover" />
-      </div>
-      <div class="card-body">
-        <span class="tag tag-teal" th:text="${onsker.title}">title</span>
-        <h4 th:text="${onsker.price}">
-        </h4>
-        <p th:text="${onsker.description}">
-        </p>
-        <div class="button">
-          <button><a href="../{link}" class="button-link">Link</a> </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
+<div class="container">
+  <h1 class="article-header-omos">
+    Ønsker
+  </h1>
+  <form
+          action="/tilføjonske"
+          method="post"
+          class="form-control">
+    <div class="container-form">
+      <label class="header">Title</label>
+      <input class="input-field" type="text" placeholder="Enter title" name="title" required>
+
+      <label class="header">Beskrivelse</label>
+      <input class="input-field" type="text" placeholder="Enter description" name="description" required>
+
+      <label class="header">Pris</label>
+      <input class="input-field" type="text" placeholder="Enter price" name="price">
+
+      <label class="header">Link</label>
+      <input class="input-field" type="text" placeholder="Enter link" name="link">
+
+      <button class="submit-button" type="submit">Tilføj ønske</button>
+    </div>
+
+  </form>
+
+    <div class="container-cards">
+        <div th:each="onsker : ${onske}">
+            <div class="card">
+                <div class="card-header">
+                    <img src="https://c0.wallpaperflare.com/preview/483/210/436/car-green-4x4-jeep.jpg" alt="rover"/>
+                </div>
+                <div class="card-body">
+                    <span class="tag tag-teal" th:text="${onsker.title}">title</span>
+                    <h4 th:text="${onsker.price}">
+                    </h4>
+                    <p th:text="${onsker.description}">
+                    </p>
+                    <div class="button">
+                        <button><a href="../{link}" class="button-link">Link</a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <footer>
-  <div th:replace="footer.fragment"></div>
+    <div th:replace="footer.fragment"></div>
 </footer>
 </body>
 </html>
