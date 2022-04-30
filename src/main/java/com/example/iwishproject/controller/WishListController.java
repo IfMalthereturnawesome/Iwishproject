@@ -54,23 +54,30 @@ public class WishListController {
 
     @PostMapping("/tilføjonskeliste")
     public String addWishList(@RequestParam("title") String title,
-                          @RequestParam("description") String description,
-                          @RequestParam("image") MultipartFile multipartFile) throws IOException {
+                              @RequestParam("description") String description,
+                              @RequestParam(value = "image", required = false) MultipartFile multipartFile) throws IOException {
         WishListRepository wishListRepository = new WishListRepository();
         WishList newWishList = new WishList();
         newWishList.setTitle(title);
         newWishList.setDescription(description);
-
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
         newWishList.setPhotos(fileName);
 
-        //Wish savedWish = iWishRepository.addWish(wish);
-        String uploadDir = "user-photos/" + newWishList.getId();
+        if (fileName.isEmpty() && newWishList.getTitle().toLowerCase().contains("Fødsel".toLowerCase())) {
+            newWishList.setPhotos("tillykke-med-foedselsdagen-1.jpg");
+            wishListRepository.addWishList(newWishList);
+        }
+          else if (fileName.isEmpty() && newWishList.getTitle().toLowerCase().contains("Jul".toLowerCase())) {
+              newWishList.setPhotos("christmas.jpg");
+            wishListRepository.addWishList(newWishList);
+        }
 
-        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
-        wishListRepository.addWishList(newWishList);
-
-        return "redirect:/onskeliste";
+         else {
+             String uploadDir = "user-photos/" + newWishList.getId();
+             FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+             wishListRepository.addWishList(newWishList);
+         }
+         return "redirect:/onskeliste";
     }
 
     @GetMapping("/sletonskeliste/{id}")
