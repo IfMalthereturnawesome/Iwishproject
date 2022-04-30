@@ -1,5 +1,7 @@
 package com.example.iwishproject.model;
 
+import java.beans.Transient;
+
 public class Wish {
   private int id;
   private String title;
@@ -7,15 +9,34 @@ public class Wish {
   private double price;
   private String link;
 
+  private String photos;
+
+
   public Wish() {
   }
 
-  public Wish(int id, String title, String description, double price, String link) {
+  public Wish(int id, String title, String description, double price, String link, String photos) {
     this.id = id;
     this.title = title;
     this.description = description;
     this.price = price;
     this.link = link;
+    this.photos = photos;
+  }
+
+  public String getPhotos() {
+    return photos;
+  }
+
+  public void setPhotos(String photos) {
+    this.photos = photos;
+  }
+
+@Transient
+  public String getPhotosImagePath() {
+    if (photos == null) return "user-photos/0" + "/gave.jpg";
+
+    return "user-photos/0" + "/" + photos;
   }
 
   public int getId() {

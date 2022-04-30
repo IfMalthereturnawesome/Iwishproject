@@ -34,9 +34,10 @@ public class IWishRepository {
         String description = resultSet.getString(3);
         double price = resultSet.getDouble(4);
         String link = resultSet.getString(5);
+        String photos = resultSet.getString(7);
         //Tilføjer dem til min constructor, for at lave Ønske objekter samt tilføjer dem til min arraylist
 
-        wishes.add(new Wish(id,title,description,price,link));
+        wishes.add(new Wish(id,title,description,price,link,photos));
 
       }
       statement.close();
@@ -51,19 +52,20 @@ public class IWishRepository {
   }
 
   //Tilføje en ønske
-  public void addWish(Wish wish){
+  public Wish addWish(Wish wish){
     getConnection();
     try{
       //prep statement
       PreparedStatement preparedStatement = getConnection().prepareStatement(
-          "INSERT INTO createwish(wishID, title, description, price, link) " +
-              "VALUES (?, ?, ?, ?, ?)");
+          "INSERT INTO createwish(wishID, title, description, price, link,photos) " +
+              "VALUES (?, ?, ?, ?, ?,?)");
       //set attributer
       preparedStatement.setInt(1,wish.getId());
       preparedStatement.setString(2, wish.getTitle());
       preparedStatement.setString(3, wish.getDescription());
       preparedStatement.setDouble(4, wish.getPrice());
       preparedStatement.setString(5, wish.getLink());
+      preparedStatement.setString(6, wish.getPhotos());
       //execute statement
       preparedStatement.executeUpdate();
     }
@@ -71,6 +73,7 @@ public class IWishRepository {
       System.out.println("Could not create");
       e.printStackTrace();
     }
+    return wish;
   }
 
   //Slet en ønske

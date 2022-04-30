@@ -15,13 +15,13 @@
 <div class="container">
     <h1 class="article-header-omos">
         Ønsker
+
     </h1>
     <div class="container-cards">
         <div th:each="onsker : ${onske}">
             <div class="card">
                 <div class="card-header">
-                    <a th:href="${onsker.link}" target="_blank"><img
-                            src="https://c0.wallpaperflare.com/preview/483/210/436/car-green-4x4-jeep.jpg" alt="rover"/></a>
+                    <a th:href="${onsker.link}" target="_blank"><img th:src="@{${onsker.photosImagePath}}" /></a>
                 </div>
                 <div class="card-body">
                     <span class="tag tag-teal" th:text="${onsker.title}">title</span>
@@ -39,6 +39,7 @@
         <form
                 action="/tilføjonske"
                 method="post"
+                enctype="multipart/form-data"
                 class="form-control">
             <div class="container-form-small">
                 <label class="header">Navn</label>
@@ -53,10 +54,9 @@
                 <label class="header">Link</label>
                 <input class="input-field" type="text" placeholder="Enter link" name="link">
 
-                <!-- Link til tilføjelse af billeder fra bruger
-              https://www.codejava.net/frameworks/spring-boot/spring-boot-file-upload-tutorial
                 <label class="header">Billed</label>
-                <input type="file" id="myFile" name="filename">-->
+                <input type="file" name="image" accept="image/png, image/jpeg, image/jpg" />
+
 
                 <button class="submit-button-small" type="submit">Opret ønske</button>
             </div>
