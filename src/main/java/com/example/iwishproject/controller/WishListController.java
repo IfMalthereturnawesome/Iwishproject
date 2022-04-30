@@ -80,19 +80,6 @@ public class WishListController {
          return "redirect:/onskeliste";
     }
 
-    /*@PostMapping("/tilføjonskeliste")
-    public String addWishList(@RequestParam("title") String title,
-                              @RequestParam("description") String description) {
-        WishListRepository wishListRepository = new WishListRepository();
-        WishList newWishList = new WishList();
-        newWishList.setTitle(title);
-        newWishList.setDescription(description);
-
-
-        wishListRepository.addWishList(newWishList);
-
-        return "redirect:/onskeliste";
-    }*/
 
     @GetMapping("/sletonskeliste/{id}")
     public String deleteWishList(@PathVariable("id") int id){
