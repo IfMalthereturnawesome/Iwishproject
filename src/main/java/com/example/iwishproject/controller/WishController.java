@@ -71,12 +71,12 @@ public String onskeliste(){
     return "redirect:/onsker";
   }
 
-  @PostMapping("/sletonske")
-  public String deletePokemon(@RequestParam("id") int id){
+  @GetMapping("/sletonske/{id}")
+  public String deletePokemon(@PathVariable("id") int id){
     IWishRepository iWishRepository = new IWishRepository();
     iWishRepository.deleteWish(id);
 
-    return "redirect:/onskeliste";
+    return "redirect:/onsker";
   }
 
 }

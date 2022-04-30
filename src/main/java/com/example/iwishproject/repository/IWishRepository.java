@@ -81,7 +81,7 @@ public class IWishRepository {
     getConnection();
     try{
       PreparedStatement preparedStatement = getConnection().prepareStatement(
-          "DELETE FROM wishes WHERE id = ?");
+          "DELETE FROM createwish WHERE wishID = ?");
 
       preparedStatement.setInt(1, wishID);
 
