@@ -12,15 +12,15 @@ body {
 
 @font-face {
     font-family: Inter;
-    src: url("/font/Inter-Black.ttf") format("ttf");
-    src: url("/font/Inter-Bold.ttf") format("ttf");
-    src: url("/font/Inter-ExtraBold.ttf") format("ttf");
-    src: url("/font/Inter-ExtraLight.ttf") format("ttf");
-    src: url("/font/Inter-Light.ttf") format("ttf");
-    src: url("/font/Inter-Medium.ttf") format("ttf");
-    src: url("/font/Inter-Regular.ttf") format("ttf");
-    src: url("/font/Inter-SemiBold.ttf") format("ttf");
-    src: url("/font/Inter-Thin.ttf") format("ttf");
+    src: url("../font/Inter-Black.ttf") format("ttf"),
+     url("../font/Inter-Bold.ttf") format("ttf"),
+     url("../font/Inter-ExtraBold.ttf") format("ttf"),
+     url("../font/Inter-ExtraLight.ttf") format("ttf"),
+     url("../font/Inter-Light.ttf") format("ttf"),
+     url("../font/Inter-Medium.ttf") format("ttf"),
+     url("../font/Inter-Regular.ttf") format("ttf"),
+     url("../font/Inter-SemiBold.ttf") format("ttf"),
+     url("../font/Inter-Thin.ttf") format("ttf");
 }
 
 .h4-header {

@@ -44,7 +44,7 @@ public String omOs(){
   }
 
   @PostMapping("/tilføjonske")
-  public String addWish(Wish wish,@RequestParam("title") String title,
+  public String addWish(@RequestParam("title") String title,
                            @RequestParam("description") String description,
                            @RequestParam("price") double price,
                            @RequestParam("link") String link,
