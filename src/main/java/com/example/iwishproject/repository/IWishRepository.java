@@ -18,12 +18,12 @@ import static com.example.iwishproject.utility.ConnectionManager.getOffConnectio
 public class IWishRepository {
 
   //Viser alle ønsker
-  public List<Wish> findAllWishes(){
+  public List<Wish> findAllWishes(int wishListID){
     //tom arraylist
     ArrayList<Wish> wishes = new ArrayList<>();
     try {
       Statement statement = getConnection().createStatement();
-      final String SQL_QUERY = "SELECT * FROM createwish";
+      final String SQL_QUERY = "SELECT * FROM createwish WHERE wishListID = ?";
       ResultSet resultSet = statement.executeQuery(SQL_QUERY);
 
       // Læser fra tabel

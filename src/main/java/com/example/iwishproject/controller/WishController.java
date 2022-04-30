@@ -11,8 +11,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
 
 @Controller
 public class WishController {
@@ -39,8 +37,8 @@ public String omOs(){
 
   @RequestMapping("/onsker")
   public String viewPage(Model model){
-    List<Wish> onsker = iWishRepository.findAllWishes();
-    model.addAttribute("onske",onsker);
+    //List<Wish> onsker = iWishRepository.findAllWishes();
+    //model.addAttribute("onske",onsker);
 
     return "onsker";
   }

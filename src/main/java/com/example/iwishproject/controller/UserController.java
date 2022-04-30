@@ -53,7 +53,8 @@ public class UserController {
     User loginUser = userRepository.findUser(eMail);
     boolean passwordValid = userRepository.passwordCheck(loginUser, password);
     if (passwordValid) {
-      session.setAttribute("user", loginUser);
+      Cookie cookieUser = new Cookie("id",String.valueOf(loginUser.getID()));
+      session.setAttribute("userID", cookieUser);
       return "redirect:/onskeliste";
     } else {
       model.addAttribute("loginFailed", "loginFailed");
