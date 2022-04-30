@@ -28,7 +28,7 @@ public class WishListController {
         this.wishListRepository = wishListRepository;
     }
 
-    @RequestMapping("/onskeliste")
+    @RequestMapping("/onskeliste/{wishListID}")
     public String viewPage(HttpSession session, Model model){
         String onskeListeSide;
         User loggedUser;
