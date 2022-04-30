@@ -46,7 +46,8 @@ public String omOs(){
   public String viewPage(@PathVariable("wishListID") int wishListID,  Model model){
     List<Wish> onsker = iWishRepository.findAllWishes(wishListID);
     model.addAttribute("onske",onsker);
-
+    model.addAttribute("wishList",wishListRepository.findAllWishLists(wishListID));
+    model.addAttribute("listId",wishListRepository.findWishListByID(wishListID));
     return "onsker";
   }
 

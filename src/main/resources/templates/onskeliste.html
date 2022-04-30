@@ -9,16 +9,27 @@
     <link rel="stylesheet" href="../static/CSS/NavBar.css">
 </head>
 <body class="konto">
-<div th:replace="kontonav.fragment"></div>
-
+<nav class="navi-section">
+    <div class="navbar" id="navbar" >
+        <div  class="logo-left">
+            <a href="/"><img th:src="@{../CSS/images/Logo-250x250.png}" class="small-nav-logo" alt="logo"
+                             src="../static/CSS/images/Logo-250x250.png"/></a>
+        </div>
+        <a href="../hvordan">Hvordan?</a>
+        <a href="../omos">Om os</a>
+        <a th:each="onskelister :${wishList.get(0)} " th:href="@{/onskeliste/{wishListID}(wishListID=${onskelister.userID})}" class="login-button">Ønskelister</a>
+    </div>
+</nav>
 
 <div class="container">
     <h1 class="article-header-lister">
         Ønskelister
 
     </h1>
+
     <div class="container-cards">
         <div th:each="onskelister : ${wishList}">
+
             <div class="card">
                 <div class="card-header-big">
                     <a th:href="@{/onsker/{wishListID}(wishListID=${onskelister.id})}" target="_blank"> <img th:src="@{${'../'+onskelister.photosImagePath}}"/></a>
@@ -29,7 +40,7 @@
                     <p th:text="${onskelister.description}">
                     </p>
                     <div class="button">
-                        <a th:href="${onskelister.id}" target="_blank" class="button-small">SE HER</a>
+                        <a th:href="${onskelister.userID}" target="_blank" class="button-small">SE HER</a>
                         <a th:href="@{/sletonskeliste/{id}(id=${onskelister.id})}" class="button-small-delete">SLET
                             ØNSKELISTE</a>
                     </div>
@@ -38,8 +49,8 @@
             </div>
         </div>
         <form
-                action="/tilføjonskeliste"
                 method="post"
+                action="/tilføjonskeliste"
                 enctype="multipart/form-data"
                 class="form-control">
             <div class="container-form-big">
@@ -48,6 +59,9 @@
 
                 <label class="header">Beskrivelse</label>
                 <input class="input-field" type="text" placeholder="Enter description" name="description" required>
+
+                <label class="header">User ID</label>
+                <input class="input-field" type="text" placeholder="Enter UserID" name="userID">
 
                 <label class="header">Billed</label> <br>
                 <input type="file" name="image" accept="image/png, image/jpeg, image/jpg"/>

@@ -56,7 +56,7 @@ public class UserController {
     if (passwordValid) {
       Cookie cookieUser = new Cookie("id",String.valueOf(loginUser.getID()));
       session.setAttribute("id", cookieUser);
-      return "redirect:onskeliste";
+      return "redirect:onskeliste/" + String.valueOf(loginUser.getID());
 
     } else {
       model.addAttribute("loginFailed", "loginFailed");

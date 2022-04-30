@@ -17,6 +17,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 public class WishListController {
@@ -36,13 +37,14 @@ public class WishListController {
         if (cookie != null) {
             onskeListeSide = "onskeliste";
             loggedUser = userRepository.findUserById(cookie.getValue());
+
             List<WishList> onskelister = wishListRepository.findAllWishLists(loggedUser.getID());
             model.addAttribute("onskeliste",onskelister);
 
         }else{
             onskeListeSide = "login";
         }
-        return onskeListeSide;
+        return onskeListeSide + userRepository.findUserById(String.valueOf(cookie));
     }
 
     @GetMapping("/onskeliste/{wishListID}")
@@ -69,31 +71,32 @@ public class WishListController {
     }
 
     @PostMapping("/tilføjonskeliste")
-    public String addWishList(@RequestParam("title") String title,
+    public String addWishList(@RequestParam("userID") int userID,
+                              @RequestParam("title") String title,
                               @RequestParam("description") String description,
                               @RequestParam(value = "image", required = false) MultipartFile multipartFile) throws IOException {
         WishListRepository wishListRepository = new WishListRepository();
         WishList newWishList = new WishList();
         newWishList.setTitle(title);
         newWishList.setDescription(description);
-        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+        String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
         newWishList.setPhotos(fileName);
+        newWishList.setUserID(userID);
 
         if (fileName.isEmpty() && newWishList.getTitle().toLowerCase().contains("Fødsel".toLowerCase())) {
             newWishList.setPhotos("tillykke-med-foedselsdagen-1.jpg");
             wishListRepository.addWishList(newWishList);
-        }
-          else if (fileName.isEmpty() && newWishList.getTitle().toLowerCase().contains("Jul".toLowerCase())) {
-              newWishList.setPhotos("christmas.jpg");
+        } else if (fileName.isEmpty() && newWishList.getTitle().toLowerCase().contains("Jul".toLowerCase())) {
+            newWishList.setPhotos("christmas.jpg");
+            wishListRepository.addWishList(newWishList);
+        }  else {
+            String uploadDir = "user-photos/";
+            FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
             wishListRepository.addWishList(newWishList);
         }
 
-         else {
-             String uploadDir = "user-photos/";
-             FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
-             wishListRepository.addWishList(newWishList);
-         }
-         return "redirect:/onskeliste";
+         //model.addAttribute("userID",userID);
+         return "redirect:/onskeliste/" + userID;
     }
 
 

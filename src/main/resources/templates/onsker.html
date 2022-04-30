@@ -9,15 +9,32 @@
     <link rel="stylesheet" href="../static/CSS/NavBar.css">
 </head>
 <body class="konto">
-<div th:replace="kontonav.fragment"></div>
+<nav class="navi-section">
+    <div class="navbar" id="navbar" >
+        <div  class="logo-left">
+            <a href="/"><img th:src="@{../CSS/images/Logo-250x250.png}" class="small-nav-logo" alt="logo"
+                             src="../static/CSS/images/Logo-250x250.png"/></a>
+        </div>
+        <a href="../hvordan">Hvordan?</a>
+        <a href="../omos">Om os</a>
+        <a th:each="onskelister :${listId.getUserID()} " th:href="@{/onskeliste/{wishListID}(wishListID=${listId.userID})}" class="login-button">Ønskelister</a>
+    </div>
+</nav>
 
 
 <div class="container">
     <h1 class="article-header-onske">
         Ønsker
-
     </h1>
+
     <div class="container-cards" >
+        <div th:each="onskelister : ${wishList}">
+
+            <div class="button">
+                <a th:href="${onskelister.userID}" target="_blank" class="button-small">SE HER</a>
+
+            </div>
+        </div>
         <div th:each="onsker : ${onske}">
             <div class="card">
                 <div class="card-header">
