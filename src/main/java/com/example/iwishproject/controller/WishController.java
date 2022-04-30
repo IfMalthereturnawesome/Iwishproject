@@ -45,9 +45,10 @@ public String omOs(){
 
   @PostMapping("/tilføjonske")
   public String addWish(@RequestParam("title") String title,
-                           @RequestParam("description") String description,
-                           @RequestParam("price") double price,
-                           @RequestParam("link") String link) {
+                        @RequestParam("description") String description,
+                        @RequestParam("price") double price,
+                        @RequestParam("link") String link,
+                        @RequestParam( value = "image", required = false) MultipartFile multipartFile) throws IOException {
     IWishRepository iWishRepository = new IWishRepository();
     Wish newWish = new Wish();
     newWish.setTitle(title);
@@ -55,16 +56,22 @@ public String omOs(){
     newWish.setPrice(price);
     newWish.setLink(link);
 
-    String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+    String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
     newWish.setPhotos(fileName);
 
-    //Wish savedWish = iWishRepository.addWish(wish);
-    String uploadDir = "user-photos/" + newWish.getId();
+    if (fileName.isEmpty()) {
+      newWish.setPhotos("gave.jpg");
+      iWishRepository.addWish(newWish);
+    } else {
 
-    FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
-   iWishRepository.addWish(newWish);
+      //Wish savedWish = iWishRepository.addWish(wish);
+      String uploadDir = "user-photos/" + newWish.getId();
 
-    return "redirect:/onskeliste";
+      FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+      iWishRepository.addWish(newWish);
+    }
+
+    return "redirect:/onsker";
   }
 
   @GetMapping("/sletonske/{id}")
@@ -72,7 +79,7 @@ public String omOs(){
     IWishRepository iWishRepository = new IWishRepository();
     iWishRepository.deleteWish(id);
 
-    return "redirect:/onskeliste";
+    return "redirect:/onsker";
   }
 
 }
