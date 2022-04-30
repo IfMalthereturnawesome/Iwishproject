@@ -22,9 +22,11 @@ body {
     src: url("/font/Inter-SemiBold.ttf") format("ttf");
     src: url("/font/Inter-Thin.ttf") format("ttf");
 }
+
 .h4-header {
     margin-bottom: 5px;
 }
+
 .h4-header::after {
     content: ",-";
     display: inline;
@@ -33,6 +35,7 @@ body {
     font-size: 16px;
     line-height: 1;
 }
+
 .h4-header::before {
     content: "DKK ";
     display: inline;
@@ -47,11 +50,13 @@ body {
     margin: 60px auto;
     background-color: #2D7BC6;
 }
+
 .container-form {
     width: 1200px;
     margin: 10px auto;
     background-color: #2D7BC6;
 }
+
 .container-form-small {
     width: 320px;
     height: 500px;
@@ -67,6 +72,7 @@ body {
     rgba(0, 0, 0, 0) 0px 0px 0px 0px,
     rgba(0, 0, 0, 0) 0px 0px 0px 0px;
 }
+
 .container-form-big {
     width: 480px;
     height: 500px;
@@ -173,6 +179,7 @@ body {
     background-repeat: no-repeat;
     margin-bottom: -150px;
 }
+
 .article-wrapper-3 {
     margin-left: 50px;
     margin-right: 50px;
@@ -220,7 +227,7 @@ body {
     font-size: 50px;
     line-height: 1;
     font-weight: bold;
-    margin-bottom:70px;
+    margin-bottom: 70px;
     background-color: #f1efef;
     width: 275px;
     height: 60px;
@@ -228,6 +235,7 @@ body {
     padding-left: 10px;
     padding-top: 5px;
 }
+
 .article-header-lister {
     margin-left: 20px;
     display: flex;
@@ -237,7 +245,7 @@ body {
     font-size: 50px;
     line-height: 1;
     font-weight: bold;
-    margin-bottom:70px;
+    margin-bottom: 70px;
     background-color: #f1efef;
     width: 325px;
     height: 60px;
@@ -245,6 +253,7 @@ body {
     padding-left: 10px;
     padding-top: 5px;
 }
+
 .article-header-onske {
     margin-left: 20px;
     display: flex;
@@ -254,7 +263,7 @@ body {
     font-size: 50px;
     line-height: 1;
     font-weight: bold;
-    margin-bottom:70px;
+    margin-bottom: 70px;
     background-color: #f1efef;
     width: 225px;
     height: 60px;
@@ -341,6 +350,7 @@ h2 {
     padding-right: 5%;
 
 }
+
 .wrapper-omos {
     margin-left: 100px;
     margin-right: 100px;
@@ -548,7 +558,8 @@ li.list {
     border-radius: 5px;
 
 }
-input::-webkit-file-upload-button{
+
+input::-webkit-file-upload-button {
     margin-top: 10px;
     margin-bottom: 10px;
     color: #000000;
@@ -562,13 +573,15 @@ input::-webkit-file-upload-button{
     cursor: pointer;
     border-radius: 5px;
 }
-input::-webkit-file-upload-button:hover{
+
+input::-webkit-file-upload-button:hover {
     transition-duration: 0.3s;
     color: #171616;
     background-color: #EDFBFF;
     -ms-transform: scale(1.01);
     transform: scale(1.01);
 }
+
 .submit-button-small {
     margin-top: 5px;
     margin-bottom: 10px;
@@ -586,6 +599,7 @@ input::-webkit-file-upload-button:hover{
     border-radius: 5px;
 
 }
+
 .submit-button-small:hover {
     transition-duration: 0.3s;
     color: #171616;
@@ -593,6 +607,7 @@ input::-webkit-file-upload-button:hover{
     -ms-transform: scale(1.1);
     transform: scale(1.1);
 }
+
 .button-small {
     background: #FFD75E;
     border-radius: 2px;
@@ -604,6 +619,7 @@ input::-webkit-file-upload-button:hover{
     text-transform: uppercase;
     cursor: pointer;
 }
+
 .button-small-delete {
     margin-top: -10px;
     background: #e12b2b;
@@ -616,6 +632,7 @@ input::-webkit-file-upload-button:hover{
     text-transform: uppercase;
     cursor: pointer;
 }
+
 .button {
     margin-bottom: 5px;
 }
@@ -733,7 +750,7 @@ input::-webkit-file-upload-button:hover{
 
 }
 
-.container-cards{
+.container-cards {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -754,12 +771,13 @@ input::-webkit-file-upload-button:hover{
     rgba(0, 0, 0, 0) 0px 0px 0px 0px,
     rgba(0, 0, 0, 0) 0px 0px 0px 0px;
 }
-.container-cards .card:hover{
+
+.container-cards .card:hover {
     transition-duration: 0.5s;
     box-shadow: none;
     background-color: #2D7BC6;
-    -ms-transform: scale(1.1);
-    transform: scale(1.1);
+    -ms-transform: scale(1.06);
+    transform: scale(1.06);
 
 }
 
@@ -769,15 +787,18 @@ input::-webkit-file-upload-button:hover{
     min-width: 300px;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
+    object-fit: fill;
 }
-.card-header-big img {
 
+.card-header-big img {
     max-height: 300px;
     max-width: 460px;
     min-width: 460px;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
+    object-fit: fill;
 }
+
 .card-body {
     display: flex;
     flex-direction: column;
@@ -789,6 +810,7 @@ input::-webkit-file-upload-button:hover{
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
+
 .card-body-big {
     display: flex;
     flex-direction: column;
@@ -814,6 +836,7 @@ input::-webkit-file-upload-button:hover{
     text-transform: uppercase;
     cursor: pointer;
 }
+
 .tag-teal {
     background-color: #2D7BC6;
 }
@@ -823,6 +846,7 @@ input::-webkit-file-upload-button:hover{
     font-size: 14px;
     margin: 0 0 auto;
 }
+
 .card-body-big p {
     font-size: 14px;
     margin: 0 0 auto;
