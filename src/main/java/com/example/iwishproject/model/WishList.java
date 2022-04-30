@@ -65,8 +65,8 @@ public class WishList {
 
     @Transient
     public String getPhotosImagePath() {
-        if (photos == null) return "user-photos/0" + "/foedselsdagscupcake.jpg";
+        if (photos == null) return "user-photos/" + "foedselsdagscupcake.jpg";
 
-        return "user-photos/0" + "/" + photos;
+        return "user-photos" + "/" + photos;
     }
 }

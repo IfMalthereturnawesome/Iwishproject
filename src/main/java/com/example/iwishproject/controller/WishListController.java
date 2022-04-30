@@ -48,7 +48,7 @@ public class WishListController {
     public String viewWishes(@PathVariable("wishListID") int wishListID, HttpSession session, Model model) {
         Cookie cookie = (Cookie) session.getAttribute("userID");
         model.addAttribute("wishListID",wishListID);
-        model.addAttribute("wishList",iWishRepository.findAllWishes(wishListID));
+        model.addAttribute("wishList",wishListRepository.findAllWishLists(wishListID));
         return "onskeliste";
     }
 
@@ -73,12 +73,26 @@ public class WishListController {
         }
 
          else {
-             String uploadDir = "user-photos/" + newWishList.getId();
+             String uploadDir = "user-photos";
              FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
              wishListRepository.addWishList(newWishList);
          }
          return "redirect:/onskeliste";
     }
+
+    /*@PostMapping("/tilføjonskeliste")
+    public String addWishList(@RequestParam("title") String title,
+                              @RequestParam("description") String description) {
+        WishListRepository wishListRepository = new WishListRepository();
+        WishList newWishList = new WishList();
+        newWishList.setTitle(title);
+        newWishList.setDescription(description);
+
+
+        wishListRepository.addWishList(newWishList);
+
+        return "redirect:/onskeliste";
+    }*/
 
     @GetMapping("/sletonskeliste/{id}")
     public String deleteWishList(@PathVariable("id") int id){

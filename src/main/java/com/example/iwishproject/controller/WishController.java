@@ -66,7 +66,7 @@ public String omOs(){
     } else {
 
       //Wish savedWish = iWishRepository.addWish(wish);
-      String uploadDir = "user-photos/" + newWish.getId();
+      String uploadDir = "user-photos";
 
       FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
       iWishRepository.addWish(newWish);

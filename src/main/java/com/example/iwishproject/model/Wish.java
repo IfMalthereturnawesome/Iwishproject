@@ -35,9 +35,9 @@ public class Wish {
 
 @Transient
   public String getPhotosImagePath() {
-    if (photos == null) return "user-photos/0" + "/gave.jpg";
+    if (photos == null) return "user-photos/" + "gave.jpg";
 
-    return "user-photos/0" + "/" + photos;
+    return "user-photos" + "/" + photos;
   }
 
   public int getId() {
