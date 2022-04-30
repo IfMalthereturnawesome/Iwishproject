@@ -54,7 +54,7 @@ body {
 }
 .container-form-small {
     width: 320px;
-    height: 400px;
+    height: 500px;
     margin: 10px 10px;
     padding: 13px;
     background-color: #2D7BC6;
@@ -499,12 +499,35 @@ li.list {
     border-radius: 5px;
 
 }
+input::-webkit-file-upload-button{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #000000;
+    font-size: 16px;
+    line-height: 1;
+    background-color: #FFD75E;
+    font-weight: bold;
+    padding: 10px;
+    font-family: Inter, sans-serif;
+    border: 0;
+    cursor: pointer;
+    border-radius: 5px;
+}
+input::-webkit-file-upload-button:hover{
+    transition-duration: 0.3s;
+    color: #171616;
+    background-color: #EDFBFF;
+    -ms-transform: scale(1.01);
+    transform: scale(1.01);
+}
 .submit-button-small {
     margin-top: 5px;
     margin-bottom: 10px;
     color: #000000;
-    font-size: 18px;
+    font-size: 24px;
     line-height: 1;
+    display: flex;
+    justify-content: stretch;
     background-color: #EDFBFE;
     font-weight: bold;
     padding: 10px;
@@ -512,6 +535,7 @@ li.list {
     border: 0;
     cursor: pointer;
     border-radius: 5px;
+
 }
 .submit-button-small:hover {
     transition-duration: 0.3s;
