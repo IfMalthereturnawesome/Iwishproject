@@ -54,8 +54,8 @@ public class UserController {
     boolean passwordValid = userRepository.passwordCheck(loginUser, password);
     if (passwordValid) {
       Cookie cookieUser = new Cookie("id",String.valueOf(loginUser.getID()));
-      session.setAttribute("userID", cookieUser);
-      return "redirect:/onskeliste/{wishListID}";
+      session.setAttribute("userID", loginUser);
+      return "redirect:/onskeliste";
     } else {
       model.addAttribute("loginFailed", "loginFailed");
       return "login";
