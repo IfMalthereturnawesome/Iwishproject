@@ -59,6 +59,31 @@ public class UserRepository {
     return loginUser; //User not found
   }
 
+  public User findUserByID(int userID){
+    //get connection from ConnectionManager
+    getConnection();
+    final String QUERY = "SELECT * FROM registeredusers WHERE ID = '"+userID+"'";
+    User loginUser = null;
+    try {
+      Statement statement = getConnection().createStatement();
+      ResultSet resultSet = statement.executeQuery(QUERY);
+
+      while (resultSet.next()) {
+        int ID = resultSet.getInt(1);
+        String eMail = resultSet.getString(2);
+        String firstName = resultSet.getString(3);
+        String lastName = resultSet.getString(4);
+        String password = resultSet.getString(5);
+        loginUser = new User(ID,eMail,password,firstName,lastName);
+      }
+
+    } catch (SQLException e) {
+      System.out.println("Could not find user");
+      e.printStackTrace();
+    }
+    return loginUser; //User not found
+  }
+
   public boolean passwordCheck(User user, String password){
     if (password.equals(user.getPassword())) {
       return true;

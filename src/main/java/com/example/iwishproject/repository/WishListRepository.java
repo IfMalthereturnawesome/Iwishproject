@@ -18,12 +18,12 @@ import static com.example.iwishproject.utility.ConnectionManager.getOffConnectio
 @Repository
 public class WishListRepository {
 
-    public List<WishList> findAllWishLists(){
+    public List<WishList> findAllWishLists(int InputUserID){
         //tom arraylist
         ArrayList<WishList> wishlist = new ArrayList<>();
         try {
             Statement statement = getConnection().createStatement();
-            final String SQL_QUERY = "SELECT * FROM allwishlist";
+            final String SQL_QUERY = "SELECT * FROM allwishlist WHERE userID = ?";
             ResultSet resultSet = statement.executeQuery(SQL_QUERY);
 
             // Læser fra tabel
@@ -37,6 +37,38 @@ public class WishListRepository {
                 //Tilføjer dem til min constructor, for at lave Ønske objekter samt tilføjer dem til min arraylist
 
                 wishlist.add(new WishList(id,title,description,userID,photos));
+
+            }
+            statement.close();
+            getOffConnection();
+
+        } catch (SQLException e) {
+            System.out.println("Virker ikke");
+            e.printStackTrace();
+        }
+        // Returner listen med alle wishlists
+        return wishlist;
+    }
+
+    public WishList findWishListByID(int InputUserID, int inputWishListID){
+        //tom arraylist
+        WishList wishlist = null;
+        try {
+            Statement statement = getConnection().createStatement();
+            final String SQL_QUERY = "SELECT * FROM allwishlist WHERE userID = ? AND id = ?";
+            ResultSet resultSet = statement.executeQuery(SQL_QUERY);
+
+            // Læser fra tabel
+            while(resultSet.next()){
+                //Giver informationerne fra tabel til attribute
+                int id = resultSet.getInt(1);
+                String title = resultSet.getString(2);
+                String description = resultSet.getString(3);
+                int userID = resultSet.getInt(4);
+                String photos = resultSet.getString(5);
+                //Tilføjer dem til min constructor, for at lave Ønske objekter samt tilføjer dem til min arraylist
+
+                wishlist = new WishList(id,title,description,userID,photos);
 
             }
             statement.close();

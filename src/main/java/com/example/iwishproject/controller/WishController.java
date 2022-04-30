@@ -37,8 +37,8 @@ public String omOs(){
 
   @RequestMapping("/onsker")
   public String viewPage(Model model){
-    List<Wish> onsker = iWishRepository.findAllWishes();
-    model.addAttribute("onske",onsker);
+    //List<Wish> onsker = iWishRepository.findAllWishes();
+    //model.addAttribute("onske",onsker);
 
     return "onsker";
   }
@@ -47,8 +47,7 @@ public String omOs(){
   public String addWish(@RequestParam("title") String title,
                            @RequestParam("description") String description,
                            @RequestParam("price") double price,
-                           @RequestParam("link") String link,
-                           @RequestParam("image") MultipartFile multipartFile) throws IOException {
+                           @RequestParam("link") String link) {
     IWishRepository iWishRepository = new IWishRepository();
     Wish newWish = new Wish();
     newWish.setTitle(title);
@@ -65,7 +64,7 @@ public String omOs(){
     FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
    iWishRepository.addWish(newWish);
 
-    return "redirect:/onsker";
+    return "redirect:/onskeliste";
   }
 
   @GetMapping("/sletonske/{id}")
@@ -73,7 +72,7 @@ public String omOs(){
     IWishRepository iWishRepository = new IWishRepository();
     iWishRepository.deleteWish(id);
 
-    return "redirect:/onsker";
+    return "redirect:/onskeliste";
   }
 
 }

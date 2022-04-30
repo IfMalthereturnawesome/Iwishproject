@@ -1,8 +1,10 @@
 package com.example.iwishproject.controller;
 
+import com.example.iwishproject.model.User;
 import com.example.iwishproject.model.Wish;
 import com.example.iwishproject.model.WishList;
 import com.example.iwishproject.repository.IWishRepository;
+import com.example.iwishproject.repository.UserRepository;
 import com.example.iwishproject.repository.WishListRepository;
 import com.example.iwishproject.utility.FileUploadUtil;
 import org.springframework.stereotype.Controller;
@@ -11,23 +13,42 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
 @Controller
 public class WishListController {
-
+    UserRepository userRepository;
     WishListRepository wishListRepository;
+    IWishRepository iWishRepository;
 
     public WishListController(WishListRepository wishListRepository) {
         this.wishListRepository = wishListRepository;
     }
 
     @RequestMapping("/onskeliste")
-    public String viewPage(Model model){
-        List<WishList> onskelister = wishListRepository.findAllWishLists();
-        model.addAttribute("onskeliste",onskelister);
+    public String viewPage(HttpSession session, Model model){
+        String onskeListeSide;
+        User loggedUser;
+        Cookie cookie = (Cookie) session.getAttribute("userID");
+        if (cookie != null) {
+            onskeListeSide = "onskeliste";
+            loggedUser = userRepository.findUserByID(Integer.parseInt(cookie.getValue()));
+            List<WishList> onskelister = wishListRepository.findAllWishLists(loggedUser.getID());
+            model.addAttribute("onskeliste",onskelister);
+        }else{
+            onskeListeSide = "login";
+        }
+        return onskeListeSide;
+    }
 
+    @RequestMapping("/onskeliste/{wishListID}")
+    public String viewWishes(@PathVariable("wishListID") int wishListID, HttpSession session, Model model) {
+        Cookie cookie = (Cookie) session.getAttribute("userID");
+        model.addAttribute("wishListID",wishListID);
+        model.addAttribute("wishList",iWishRepository.findAllWishes(wishListID));
         return "onskeliste";
     }
 

@@ -8,6 +8,7 @@ public class Wish {
   private String description;
   private double price;
   private String link;
+  private int listID;
 
   private String photos;
 
@@ -77,5 +78,13 @@ public class Wish {
 
   public void setLink(String link) {
     this.link = link;
+  }
+
+  public int getListID() {
+    return listID;
+  }
+
+  public void setListID(int listID) {
+    this.listID = listID;
   }
 }
