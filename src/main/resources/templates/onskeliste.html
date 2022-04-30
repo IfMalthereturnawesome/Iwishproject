@@ -1,55 +1,67 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-    <head>
-        <meta charset="UTF-8">
-        <title>ønskeliste</title>
-        <link th:href="@{/CSS/main.css}" rel="stylesheet"/>
-        <link rel="stylesheet" href="../static/CSS/main.css">
-        <link th:href="@{/CSS/NavBar.css}" rel="stylesheet"/>
-        <link rel="stylesheet" href="../static/CSS/NavBar.css">
-    </head>
-<body>
-    <div th:replace="kontonav.fragment"></div>
+<head>
+    <meta charset="UTF-8">
+    <title>ønskeliste</title>
+    <link th:href="@{/CSS/main.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="../static/CSS/main.css">
+    <link th:href="@{/CSS/NavBar.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="../static/CSS/NavBar.css">
+</head>
+<body class="konto">
+<div th:replace="kontonav.fragment"></div>
 
-    <h1 class="header">
+
+<div class="container">
+    <h1 class="article-header-omos">
         Ønskelister
+
     </h1>
-    <table>
-        <thead>
-        <tr>
-            <th scope="col">
-                Navn
-            </th>
-            <th scope="col">
-                Beskrivelse
-            </th>
-            <th scope="col">Rediger</th>
-            <th scope="col">Slet</th>
+    <div class="container-cards">
+        <div th:each="onskelister : ${onskeliste}">
+            <div class="card">
+                <div class="card-header">
+                    <img th:src="@{${onskelister.photosImagePath}}"/>
+                </div>
+                <div class="card-body">
+                    <span class="tag tag-teal" th:text="${onskelister.title}">title</span>
+                    <h4 class="h4-header" th:text="${onskelister.id}">DKK
+                    </h4>
+                    <p th:text="${onskelister.description}">
+                    </p>
+                    <div class="button">
+                        <a th:href="${onskelister.id}" target="_blank" class="button-small">SE HER</a>
+                        <a th:href="@{/sletonskeliste/{id}(id=${onskelister.id})}" class="button-small-delete">SLET
+                            ØNSKE</a>
+                    </div>
+                </div>
 
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="pokemon: ${pokemons}">
+            </div>
+        </div>
+        <form
+                action="/tilføjonskeliste"
+                method="post"
+                enctype="multipart/form-data"
+                class="form-control">
+            <div class="container-form-small">
+                <label class="header">Navn</label>
+                <input class="input-field" type="text" placeholder="Enter title" name="title" required>
 
-            <td >
-                <a th:href="@{/{id}(id=${pokemon.id})}" class="individual"  th:text="${pokemon.name}" target="_blank" ></a>
-            </td>
-            <td >
-                <a th:href="@{/{id}(id=${pokemon.id})}" class="individual"  th:text="${pokemon.speed}" target="_blank" ></a>
-            </td>
+                <label class="header">Beskrivelse</label>
+                <input class="input-field" type="text" placeholder="Enter description" name="description" required>
 
-            </td>
-            <td class="row-update"><a class="link-row link" th:href="@{/edit/{id}(id=${pokemon.id})}">edit</a></td>
-            <td class="row-delete"><a class="link-row link" th:href="@{/delete/{id}(id=${pokemon.id})}">delete</a></td>
+                <label class="header">Billed</label>
+                <input type="file" name="image" accept="image/png, image/jpeg, image/jpg"/>
 
-        </tr>
-        </tbody>
 
-    </table>
+                <button class="submit-button-small" type="submit">Opret ønskeliste</button>
+            </div>
 
-    <footer>
-        <div th:replace="footer.fragment"></div>
-    </footer>
-
+        </form>
+    </div>
+</div>
+<footer>
+    <div th:replace="footer.fragment"></div>
+</footer>
 </body>
 </html>
