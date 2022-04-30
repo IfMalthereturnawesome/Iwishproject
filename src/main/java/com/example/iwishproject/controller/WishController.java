@@ -33,10 +33,7 @@ public class WishController {
 public String omOs(){
     return "omos";
 }
-@GetMapping("/onskeliste")
-public String onskeliste(){
-    return "onskeliste";
-}
+
 
   @RequestMapping("/onsker")
   public String viewPage(Model model){
@@ -72,7 +69,7 @@ public String onskeliste(){
   }
 
   @GetMapping("/sletonske/{id}")
-  public String deletePokemon(@PathVariable("id") int id){
+  public String deleteWish(@PathVariable("id") int id){
     IWishRepository iWishRepository = new IWishRepository();
     iWishRepository.deleteWish(id);
 

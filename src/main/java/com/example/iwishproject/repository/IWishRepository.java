@@ -58,7 +58,7 @@ public class IWishRepository {
       //prep statement
       PreparedStatement preparedStatement = getConnection().prepareStatement(
           "INSERT INTO createwish(wishID, title, description, price, link,photos) " +
-              "VALUES (?, ?, ?, ?, ?,?)");
+              "VALUES (?, ?, ?, ?, ?, ?)");
       //set attributer
       preparedStatement.setInt(1,wish.getId());
       preparedStatement.setString(2, wish.getTitle());
