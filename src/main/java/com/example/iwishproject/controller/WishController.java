@@ -36,10 +36,10 @@ public String omOs(){
 }
 
 
-  @RequestMapping("/onsker")
-  public String viewPage(Model model){
-    //List<Wish> onsker = iWishRepository.findAllWishes();
-    //model.addAttribute("onske",onsker);
+  @GetMapping("/onsker/{wishListID}")
+  public String viewPage(@PathVariable("wishListID") int wishListID,  Model model){
+    List<Wish> onsker = iWishRepository.findAllWishes(wishListID);
+    model.addAttribute("onske",onsker);
 
     return "onsker";
   }

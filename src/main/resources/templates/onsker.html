@@ -21,7 +21,7 @@
         <div th:each="onsker : ${onske}">
             <div class="card">
                 <div class="card-header">
-                    <a th:href="${onsker.link}" target="_blank"><img th:src="@{${onsker.photosImagePath}}" /></a>
+                    <a th:href="${onsker.link}" target="_blank"><img th:src="@{${'../'+onsker.photosImagePath}}" /></a>
                 </div>
                 <div class="card-body">
                     <span class="tag tag-teal" th:text="${onsker.title}">title</span>

@@ -16,12 +16,13 @@ public class Wish {
   public Wish() {
   }
 
-  public Wish(int id, String title, String description, double price, String link, String photos) {
+  public Wish(int id, String title, String description, double price, String link, int listID, String photos) {
     this.id = id;
     this.title = title;
     this.description = description;
     this.price = price;
     this.link = link;
+    this.listID = listID;
     this.photos = photos;
   }
 

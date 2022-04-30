@@ -52,10 +52,12 @@ public class UserController {
     UserRepository userRepository = new UserRepository();
     User loginUser = userRepository.findUser(eMail);
     boolean passwordValid = userRepository.passwordCheck(loginUser, password);
+
     if (passwordValid) {
       Cookie cookieUser = new Cookie("id",String.valueOf(loginUser.getID()));
-      session.setAttribute("userID", loginUser);
-      return "redirect:/onskeliste";
+      session.setAttribute("id", cookieUser);
+      return "redirect:onskeliste";
+
     } else {
       model.addAttribute("loginFailed", "loginFailed");
       return "login";

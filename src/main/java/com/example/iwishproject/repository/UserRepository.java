@@ -58,11 +58,14 @@ public class UserRepository {
     }
     return loginUser; //User not found
   }
+  public User findUserById(String id) {
+    return findUserWhere("id", id);
+  }
 
-  public User findUserByID(int userID){
+  public User findUserWhere(String field,String userID){
     //get connection from ConnectionManager
     getConnection();
-    final String QUERY = "SELECT * FROM registeredusers WHERE ID = '"+userID+"'";
+    final String QUERY = "SELECT * FROM registeredusers WHERE " + field + " = \"" + userID + "\"";
     User loginUser = null;
     try {
       Statement statement = getConnection().createStatement();

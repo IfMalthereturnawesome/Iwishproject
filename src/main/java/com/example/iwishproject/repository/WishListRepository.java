@@ -18,12 +18,12 @@ import static com.example.iwishproject.utility.ConnectionManager.getOffConnectio
 @Repository
 public class WishListRepository {
 
-    public List<WishList> findAllWishLists(int InputUserID){
+    public List<WishList> findAllWishLists(int inputUserID){
         //tom arraylist
         ArrayList<WishList> wishlist = new ArrayList<>();
         try {
             Statement statement = getConnection().createStatement();
-            final String SQL_QUERY = "SELECT * FROM allwishlist WHERE userID = "+InputUserID;
+            final String SQL_QUERY = "SELECT * FROM allwishlist WHERE userID = '"+inputUserID+"'";
             ResultSet resultSet = statement.executeQuery(SQL_QUERY);
 
             // Læser fra tabel
@@ -50,12 +50,12 @@ public class WishListRepository {
         return wishlist;
     }
 
-    public WishList findWishListByID(int InputUserID, int inputWishListID){
+    public WishList findWishListByID( int inputWishListID){
         //tom arraylist
         WishList wishlist = null;
         try {
             Statement statement = getConnection().createStatement();
-            final String SQL_QUERY = "SELECT * FROM allwishlist WHERE userID = "+inputWishListID  +" AND id = "+InputUserID;
+            final String SQL_QUERY = "SELECT * FROM allwishlist WHERE id = '"+inputWishListID+"'";
             ResultSet resultSet = statement.executeQuery(SQL_QUERY);
 
             // Læser fra tabel

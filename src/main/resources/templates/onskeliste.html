@@ -15,17 +15,17 @@
 <div class="container">
     <h1 class="article-header-lister">
         Ønskelister
+
     </h1>
     <div class="container-cards">
-        <div th:each="onskelister : ${onskeliste}">
+        <div th:each="onskelister : ${wishList}">
             <div class="card">
                 <div class="card-header-big">
-                    <img th:src="@{${onskelister.photosImagePath}}"/>
+                    <a th:href="@{/onsker/{wishListID}(wishListID=${onskelister.id})}" target="_blank"> <img th:src="@{${'../'+onskelister.photosImagePath}}"/></a>
                 </div>
                 <div class="card-body-big">
                     <span class="tag tag-teal" th:text="${onskelister.title}">title</span>
-                    <h4 class="h4-header" th:text="${onskelister.id}">DKK
-                    </h4>
+
                     <p th:text="${onskelister.description}">
                     </p>
                     <div class="button">

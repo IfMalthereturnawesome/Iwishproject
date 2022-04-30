@@ -23,7 +23,7 @@ public class IWishRepository {
     ArrayList<Wish> wishes = new ArrayList<>();
     try {
       Statement statement = getConnection().createStatement();
-      final String SQL_QUERY = "SELECT * FROM createwish WHERE wishListID = ?";
+      final String SQL_QUERY = "SELECT * FROM createwish WHERE wishListID = '"+wishListID+"'";
       ResultSet resultSet = statement.executeQuery(SQL_QUERY);
 
       // Læser fra tabel
@@ -34,10 +34,11 @@ public class IWishRepository {
         String description = resultSet.getString(3);
         double price = resultSet.getDouble(4);
         String link = resultSet.getString(5);
+        int listID = resultSet.getInt(6);
         String photos = resultSet.getString(7);
         //Tilføjer dem til min constructor, for at lave Ønske objekter samt tilføjer dem til min arraylist
 
-        wishes.add(new Wish(id,title,description,price,link,photos));
+        wishes.add(new Wish(id,title,description,price,link,listID,photos));
 
       }
       statement.close();

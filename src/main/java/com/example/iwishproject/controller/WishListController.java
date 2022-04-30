@@ -28,25 +28,41 @@ public class WishListController {
         this.wishListRepository = wishListRepository;
     }
 
-    @RequestMapping("/onskeliste/{userID}")
-    public String viewPage(HttpSession session, Model model){
+    @GetMapping("/onskeliste")
+    public String viewPage( HttpSession session, Model model){
         String onskeListeSide;
         User loggedUser;
-        Cookie cookie = (Cookie) session.getAttribute("userID");
+        Cookie cookie = (Cookie) session.getAttribute("id");
         if (cookie != null) {
             onskeListeSide = "onskeliste";
-            loggedUser = userRepository.findUserByID(Integer.parseInt(cookie.getValue()));
+            loggedUser = userRepository.findUserById(cookie.getValue());
             List<WishList> onskelister = wishListRepository.findAllWishLists(loggedUser.getID());
             model.addAttribute("onskeliste",onskelister);
+
         }else{
             onskeListeSide = "login";
         }
         return onskeListeSide;
     }
 
-    @RequestMapping("/onskeliste/{wishListID}")
+    @GetMapping("/onskeliste/{wishListID}")
     public String viewWishes(@PathVariable("wishListID") int wishListID, HttpSession session, Model model) {
-        Cookie cookie = (Cookie) session.getAttribute("userID");
+        boolean user = false;
+        boolean creator = false;
+
+        Cookie cookie = (Cookie) session.getAttribute("id");
+
+        if (cookie != null) {
+            user = true;
+            String id = cookie.getValue();
+            WishList wishList = this.wishListRepository.findWishListByID(wishListID);
+            if (wishList != null) {
+                creator = true;
+            }
+
+        }
+        model.addAttribute("user",user);
+        model.addAttribute("creator",creator);
         model.addAttribute("wishListID",wishListID);
         model.addAttribute("wishList",wishListRepository.findAllWishLists(wishListID));
         return "onskeliste";
@@ -73,7 +89,7 @@ public class WishListController {
         }
 
          else {
-             String uploadDir = "user-photos";
+             String uploadDir = "user-photos/";
              FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
              wishListRepository.addWishList(newWishList);
          }
