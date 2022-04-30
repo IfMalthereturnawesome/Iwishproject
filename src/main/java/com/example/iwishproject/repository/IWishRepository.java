@@ -58,15 +58,16 @@ public class IWishRepository {
     try{
       //prep statement
       PreparedStatement preparedStatement = getConnection().prepareStatement(
-          "INSERT INTO createwish(wishID, title, description, price, link,photos) " +
-              "VALUES (?, ?, ?, ?, ?, ?)");
+          "INSERT INTO createwish(wishID, title, description, price, link, wishListID, photos) " +
+              "VALUES (?, ?, ?, ?, ?, ?,?)");
       //set attributer
       preparedStatement.setInt(1,wish.getId());
       preparedStatement.setString(2, wish.getTitle());
       preparedStatement.setString(3, wish.getDescription());
       preparedStatement.setDouble(4, wish.getPrice());
       preparedStatement.setString(5, wish.getLink());
-      preparedStatement.setString(6, wish.getPhotos());
+      preparedStatement.setInt(6,wish.getListID());
+      preparedStatement.setString(7, wish.getPhotos());
       //execute statement
       preparedStatement.executeUpdate();
     }
