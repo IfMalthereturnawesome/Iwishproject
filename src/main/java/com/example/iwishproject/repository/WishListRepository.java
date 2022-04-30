@@ -23,7 +23,7 @@ public class WishListRepository {
         ArrayList<WishList> wishlist = new ArrayList<>();
         try {
             Statement statement = getConnection().createStatement();
-            final String SQL_QUERY = "SELECT * FROM allwishlist WHERE userID = ?";
+            final String SQL_QUERY = "SELECT * FROM allwishlist WHERE userID = "+InputUserID;
             ResultSet resultSet = statement.executeQuery(SQL_QUERY);
 
             // Læser fra tabel
@@ -55,7 +55,7 @@ public class WishListRepository {
         WishList wishlist = null;
         try {
             Statement statement = getConnection().createStatement();
-            final String SQL_QUERY = "SELECT * FROM allwishlist WHERE userID = ? AND id = ?";
+            final String SQL_QUERY = "SELECT * FROM allwishlist WHERE userID = "+inputWishListID  +" AND id = "+InputUserID;
             ResultSet resultSet = statement.executeQuery(SQL_QUERY);
 
             // Læser fra tabel
