@@ -13,17 +13,16 @@
 
 
 <div class="container">
-    <h1 class="article-header-omos">
+    <h1 class="article-header-lister">
         Ønskelister
-
     </h1>
     <div class="container-cards">
         <div th:each="onskelister : ${onskeliste}">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header-big">
                     <img th:src="@{${onskelister.photosImagePath}}"/>
                 </div>
-                <div class="card-body">
+                <div class="card-body-big">
                     <span class="tag tag-teal" th:text="${onskelister.title}">title</span>
                     <h4 class="h4-header" th:text="${onskelister.id}">DKK
                     </h4>
@@ -32,7 +31,7 @@
                     <div class="button">
                         <a th:href="${onskelister.id}" target="_blank" class="button-small">SE HER</a>
                         <a th:href="@{/sletonskeliste/{id}(id=${onskelister.id})}" class="button-small-delete">SLET
-                            ØNSKE</a>
+                            ØNSKELISTE</a>
                     </div>
                 </div>
 
@@ -43,14 +42,14 @@
                 method="post"
                 enctype="multipart/form-data"
                 class="form-control">
-            <div class="container-form-small">
+            <div class="container-form-big">
                 <label class="header">Navn</label>
                 <input class="input-field" type="text" placeholder="Enter title" name="title" required>
 
                 <label class="header">Beskrivelse</label>
                 <input class="input-field" type="text" placeholder="Enter description" name="description" required>
 
-                <label class="header">Billed</label>
+                <label class="header">Billed</label> <br>
                 <input type="file" name="image" accept="image/png, image/jpeg, image/jpg"/>
 
 
