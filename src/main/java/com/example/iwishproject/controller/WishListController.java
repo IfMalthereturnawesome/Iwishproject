@@ -1,7 +1,6 @@
 package com.example.iwishproject.controller;
 
 import com.example.iwishproject.model.User;
-import com.example.iwishproject.model.Wish;
 import com.example.iwishproject.model.WishList;
 import com.example.iwishproject.repository.IWishRepository;
 import com.example.iwishproject.repository.UserRepository;
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -85,7 +83,7 @@ public class WishListController {
                               @RequestParam("title") String title,
                               @RequestParam("description") String description,
                               @ModelAttribute("user") WishList user,
-                              BindingResult result, ModelMap model,
+                              ModelMap model,
                               @RequestParam(value = "image", required = false) MultipartFile multipartFile) throws IOException {
         WishListRepository wishListRepository = new WishListRepository();
         WishList newWishList = new WishList();
@@ -99,7 +97,7 @@ public class WishListController {
         model.addAttribute("title", user.getTitle());
         model.addAttribute("listID", user.getId());
 
-        wishListMap.put((long) user.getUserID(), user);
+
 
         String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
         newWishList.setPhotos(fileName);

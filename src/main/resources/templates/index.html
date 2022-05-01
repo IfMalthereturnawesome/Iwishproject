@@ -11,18 +11,19 @@
 </head>
 <body>
 <main class="hero-section">
-    <nav class="navi-section">
-        <div class="navbar" id="navbar">
-            <div class="logo-left">
-                <a href="/"><img th:src="@{../CSS/images/Logo-250x250.png}" class="small-nav-logo" alt="logo"
-                                          src="../static/CSS/images/Logo-250x250.png"/></a>
-            </div>
-            <a href="../hvordan">Hvordan?</a>
-            <a href="../omos">Om os</a>
-            <a href="../tilmeld">Tilmeld</a>
-            <a href="../login" class="login-button">Log ind</a>
+
+    <div th:if="${user}">
+        <div th:replace="kontonav.fragment :: kontoNav">
+
         </div>
-    </nav>
+    </div>
+    <div th:unless="${user}">
+        <div th:replace="nav.fragment :: guestNav">
+
+        </div>
+    </div>
+
+
     <div class="mainheader">
         <div class="wrapper">
             <h1 class="maintext">
