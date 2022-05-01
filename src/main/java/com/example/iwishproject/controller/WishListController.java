@@ -34,7 +34,7 @@ public class WishListController {
     }
 
     @GetMapping("/onskeliste")
-    public String viewPage( HttpSession session, Model model){
+    public String viewPage(HttpSession session, Model model) {
         String onskeListeSide;
         User loggedUser;
         Cookie cookie = (Cookie) session.getAttribute("id");
@@ -43,9 +43,9 @@ public class WishListController {
             loggedUser = userRepository.findUserById(cookie.getValue());
 
             List<WishList> onskelister = wishListRepository.findAllWishLists(loggedUser.getID());
-            model.addAttribute("onskeliste",onskelister);
+            model.addAttribute("onskeliste", onskelister);
 
-        }else{
+        } else {
             onskeListeSide = "login";
         }
         return onskeListeSide + userRepository.findUserById(String.valueOf(cookie));
@@ -68,10 +68,10 @@ public class WishListController {
 
         }
 
-        model.addAttribute("user",user);
-        model.addAttribute("creator",creator);
-        model.addAttribute("userID",wishListID);
-        model.addAttribute("wishList",wishListRepository.findAllWishLists(wishListID));
+        model.addAttribute("user", user);
+        model.addAttribute("creator", creator);
+        model.addAttribute("userID", wishListID);
+        model.addAttribute("wishList", wishListRepository.findAllWishLists(wishListID));
         return "onskeliste";
     }
 
@@ -91,38 +91,38 @@ public class WishListController {
         WishList newWishList = new WishList();
         newWishList.setTitle(title);
         newWishList.setDescription(description);
-        String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
-        newWishList.setPhotos(fileName);
+
         newWishList.setUserID(userID);
 
-        if (result.hasErrors()) {
-            return "error";
-        }
 
-        model.addAttribute("userID",user.getUserID());
-        model.addAttribute("title",user.getTitle());
-        model.addAttribute("listID",user.getId());
+        model.addAttribute("userID", user.getUserID());
+        model.addAttribute("title", user.getTitle());
+        model.addAttribute("listID", user.getId());
 
-        wishListMap.put((long) user.getUserID(),user);
+        wishListMap.put((long) user.getUserID(), user);
+
+        String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
+        newWishList.setPhotos(fileName);
+
 
         if (fileName.isEmpty() && newWishList.getTitle().toLowerCase().contains("Fød".toLowerCase())) {
             newWishList.setPhotos("tillykke-med-foedselsdagen-1.jpg");
-            wishListRepository.addWishList(newWishList);
-        } else if (fileName.isEmpty() && newWishList.getTitle().toLowerCase().contains("Jul".toLowerCase())) {
+
+        } else if (fileName.isEmpty() && newWishList.getTitle().contains("Jul".toLowerCase())) {
             newWishList.setPhotos("christmas.jpg");
-            wishListRepository.addWishList(newWishList);
-        }  else {
+
+        } else if(!(fileName.isEmpty())){
             String uploadDir = "user-photos/";
             FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
-            wishListRepository.addWishList(newWishList);
         }
 
-         //model.addAttribute("userID",userID);
-         return "redirect:/onskeliste/" + userID;
+        wishListRepository.addWishList(newWishList);
+        //model.addAttribute("userID",userID);
+        return "redirect:/onskeliste/" + userID;
     }
 
     @GetMapping("/sletonskeliste/{id}")
-    public String deleteWishList(@PathVariable("id") int id){
+    public String deleteWishList(@PathVariable("id") int id) {
         //WishListRepository wishListRepository = new WishListRepository();
         wishListRepository.deleteWishList(id);
 

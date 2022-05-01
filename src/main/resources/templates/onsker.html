@@ -43,7 +43,7 @@
         <div th:each="onskelister : ${wishList}">
 
             <div class="button">
-                <a th:href="${onskelister.userID}" target="_blank" class="button-small">SE HER</a>
+                <a th:href="${onskelister.userID}" class="button-small">SE HER</a>
 
             </div>
         </div>
@@ -86,7 +86,7 @@
                 <label class="header">Link</label>
                 <input class="input-field" type="text" placeholder="Enter link" name="link">
 
-                <label class="header">Ønskeliste</label>
+
                 <input class="input-field" type="hidden" name="wishListID" th:value="${listId.id}" >
 
 
