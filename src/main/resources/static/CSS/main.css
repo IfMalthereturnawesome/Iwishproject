@@ -45,12 +45,32 @@ body {
     line-height: 1;
 }
 .h4-header-before::before {
-    content: "Ønskelister i alt: ";
-    display: inline;
+    content: "Ønskelister i alt # ";
+    display: inline-block;
     justify-content: start;
-    color: #2f2f2d;
-    font-size: 16px;
+    align-items: start;
+    font-size: 18px;
     line-height: 1;
+    background: #EDFBFF;
+    border-radius: 2px;
+    font-weight: bold;
+    color: #171616;
+    padding: 1px 3px;
+    text-transform: uppercase;
+}
+.h4-header-before{
+    display: inline-block;
+    margin-left: 20px;
+    justify-content: start;
+    align-items: start;
+    font-size: 18px;
+    line-height: 1;
+    background: #EDFBFF;
+    border-radius: 2px;
+    font-weight: bold;
+    color: #171616;
+    padding: 3px 6px;
+    text-transform: uppercase;
 }
 .h4-header-before-wishes {
     display: inline-block;
@@ -67,7 +87,7 @@ body {
     text-transform: uppercase;
 }
 .h4-header-before-wishes::before {
-    content: "Ønsker I alt:  ";
+    content: "Ønsker I alt # ";
     display: inline-block;
     justify-content: start;
     align-items: start;
