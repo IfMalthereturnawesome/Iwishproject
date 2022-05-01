@@ -23,10 +23,17 @@
 
 
 <div class="container">
-    <h1 class="article-header-onske">
+    <h1 class="article-header-lister">
         Ønsker
     </h1>
-    <div class="header" th:each=" names : ${onske.size()}">
+    <div class="card-header-big" >
+            <h2 class="h4-header-before-title" th:each="title : ${listId}" th:text="${title.title}"></h2>
+        <a th:each="onskelister :${listId} " th:href="@{/onskeliste/{wishListID}(wishListID=${listId.userID})}" class="button-small">Se alle dine Ønskelister</a>
+    </div>
+
+
+
+    <div class="card-header-small" th:each=" names : ${onske.size()}">
         <h2 class="h4-header-before-wishes" th:text="${names}">
             Du har
         </h2>

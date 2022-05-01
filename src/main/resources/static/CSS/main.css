@@ -52,13 +52,68 @@ body {
     font-size: 16px;
     line-height: 1;
 }
-.h4-header-before-wishes::before {
-    content: "Ønsker i alt: ";
-    display: inline;
+.h4-header-before-wishes {
+    display: inline-block;
+    margin-left: 20px;
     justify-content: start;
-    color: #2f2f2d;
-    font-size: 16px;
+    align-items: start;
+    font-size: 18px;
     line-height: 1;
+    background: #EDFBFF;
+    border-radius: 2px;
+    font-weight: bold;
+    color: #171616;
+    padding: 3px 6px;
+    text-transform: uppercase;
+}
+.h4-header-before-wishes::before {
+    content: "Ønsker I alt:  ";
+    display: inline-block;
+    justify-content: start;
+    align-items: start;
+    font-size: 18px;
+    line-height: 1;
+    background: #EDFBFF;
+    border-radius: 2px;
+    font-weight: bold;
+    color: #171616;
+    padding: 1px 3px;
+    text-transform: uppercase;
+}
+.h4-header-before-title::before {
+    content: "Ønskeliste: ";
+    display: inline-block;
+    justify-content: start;
+    align-items: start;
+    font-size: 15px;
+    line-height: 1;
+    background: #FFD75E;
+    border-radius: 2px;
+    font-weight: bold;
+    color: #171616;
+    padding: 1px 3px;
+    text-transform: uppercase;
+}
+.h4-header-before-title {
+    display: inline-block;
+    margin-left: 20px;
+    justify-content: start;
+    align-items: start;
+    font-size: 15px;
+    line-height: 1;
+    background: #FFD75E;
+    border-radius: 2px;
+    font-weight: bold;
+    color: #171616;
+    padding: 3px 6px;
+    text-transform: uppercase;
+}
+.button-small:hover  {
+    background-color: #EDFBFF;
+    color: #171616;
+    transition-duration: 0.3s;
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
 }
 
 .container {
@@ -240,7 +295,7 @@ body {
     display: flex;
     margin-top: 40px;
     justify-content: start;
-    color: #f1efef;
+    color: #EDFBFF;
     font-size: 36px;
     line-height: 1;
     font-weight: bold;
@@ -252,7 +307,7 @@ body {
     display: flex;
     margin-top: -30px;
     justify-content: start;
-    color: #f1efef;
+    color: #EDFBFF;
     font-size: 36px;
     line-height: 1;
     font-weight: bold;
@@ -270,7 +325,7 @@ body {
     line-height: 1;
     font-weight: bold;
     margin-bottom: 70px;
-    background-color: #f1efef;
+    background-color: #EDFBFF;
     width: 275px;
     height: 60px;
     font-family: Inter, sans-serif;
@@ -287,7 +342,7 @@ body {
     line-height: 1;
     font-weight: bold;
     margin-bottom: 55px;
-    background-color: #f1efef;
+    background-color: #EDFBFF;
     width: 750px;
     height: 60px;
     font-family: Inter, sans-serif;
@@ -305,8 +360,8 @@ body {
     line-height: 1;
     font-weight: bold;
     margin-bottom: 70px;
-    background-color: #f1efef;
-    width: 325px;
+    background-color: #EDFBFF;
+    width: 376px;
     height: 60px;
     font-family: Inter, sans-serif;
     padding-left: 10px;
@@ -323,7 +378,7 @@ body {
     line-height: 1;
     font-weight: bold;
     margin-bottom: 70px;
-    background-color: #f1efef;
+    background-color: #EDFBFF;
     width: 225px;
     height: 60px;
     font-family: Inter, sans-serif;
@@ -334,7 +389,7 @@ body {
 .article-text {
     display: flex;
     justify-content: start;
-    color: #f1efef;
+    color: #EDFBFF;
     font-size: 16px;
     line-height: 1.4;
     font-weight: normal;
@@ -344,7 +399,7 @@ body {
 .article-text-hvordan {
     display: flex;
     justify-content: start;
-    color: #f1efef;
+    color: #EDFBFF;
     font-size: 16px;
     line-height: 1.4;
     font-weight: normal;
@@ -678,6 +733,7 @@ input::-webkit-file-upload-button:hover {
     transform: scale(1.1);
 }
 
+
 .button-small {
     background: #FFD75E;
     border-radius: 2px;
@@ -801,7 +857,7 @@ input::-webkit-file-upload-button:hover {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-
+    margin-top: 20px;
 }
 
 .container-cards .card {
@@ -843,6 +899,9 @@ input::-webkit-file-upload-button:hover {
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
     object-fit: fill;
+}
+.card-header-small {
+    margin-top: 30px;
 }
 
 .card-body {
