@@ -42,8 +42,8 @@ public String omOs(){
 }
 
 
-  @GetMapping("/onsker/{wishListID}")
-  public String viewPage(@PathVariable("wishListID") int wishListID,  Model model){
+  @GetMapping("/onsker/{id}")
+  public String viewPage(@PathVariable("id") int wishListID,  Model model){
     List<Wish> onsker = iWishRepository.findAllWishes(wishListID);
     model.addAttribute("onske",onsker);
     model.addAttribute("wishList",wishListRepository.findAllWishLists(wishListID));
@@ -91,7 +91,7 @@ public String omOs(){
 
   @GetMapping("/sletonske/{id}")
   public String deleteWish(@PathVariable("id") int id){
-    IWishRepository iWishRepository = new IWishRepository();
+   // IWishRepository iWishRepository = new IWishRepository();
     iWishRepository.deleteWish(id);
 
     return "redirect:/onsker";

@@ -111,7 +111,7 @@ public class WishListRepository {
         getConnection();
         try{
             PreparedStatement preparedStatement = getConnection().prepareStatement(
-                    "DELETE FROM allwishlist WHERE id = ?");
+                    "DELETE FROM allwishlist WHERE id =?");
 
             preparedStatement.setInt(1, id);
 

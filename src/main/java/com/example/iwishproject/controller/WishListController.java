@@ -99,13 +99,14 @@ public class WishListController {
          return "redirect:/onskeliste/" + userID;
     }
 
-
     @GetMapping("/sletonskeliste/{id}")
     public String deleteWishList(@PathVariable("id") int id){
-        WishListRepository wishListRepository = new WishListRepository();
+        //WishListRepository wishListRepository = new WishListRepository();
         wishListRepository.deleteWishList(id);
 
-        return "redirect:/onskeliste";
+        User listID = userRepository.findUserById(String.valueOf(id));
+
+        return "redirect:/onskeliste" + "/" + listID;
     }
 
 
