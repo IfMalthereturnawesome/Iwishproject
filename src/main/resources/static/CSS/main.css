@@ -49,6 +49,7 @@ body {
     width: 1200px;
     margin: 60px auto;
     background-color: #2D7BC6;
+    margin-bottom: -20px;
 }
 
 .container-form {
@@ -105,6 +106,9 @@ body {
     display: flex;
     align-items: center;
     color: #3DD9F8;
+}
+.full-page {
+    height: 700px;
 }
 
 .small-container:hover {
@@ -177,7 +181,7 @@ body {
     display: flex;
     background-size: contain;
     background-repeat: no-repeat;
-    margin-bottom: -150px;
+    margin-bottom: -120px;
 }
 
 .article-wrapper-3 {
@@ -236,6 +240,23 @@ body {
     padding-top: 5px;
 }
 
+.article-header-hvordan {
+    display: flex;
+    margin-top: 60px;
+    justify-content: start;
+    color: #000000;
+    font-size: 50px;
+    line-height: 1;
+    font-weight: bold;
+    margin-bottom: 55px;
+    background-color: #f1efef;
+    width: 750px;
+    height: 60px;
+    font-family: Inter, sans-serif;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+
 .article-header-lister {
     margin-left: 20px;
     display: flex;
@@ -280,6 +301,17 @@ body {
     line-height: 1.4;
     font-weight: normal;
     font-family: Inter, sans-serif;
+}
+
+.article-text-hvordan {
+    display: flex;
+    justify-content: start;
+    color: #f1efef;
+    font-size: 16px;
+    line-height: 1.4;
+    font-weight: normal;
+    font-family: Inter, sans-serif;
+    padding-right: 33%;
 }
 
 .links {
@@ -637,31 +669,7 @@ input::-webkit-file-upload-button:hover {
     margin-bottom: 5px;
 }
 
-.submit-button-2 {
-    margin-top: 25px;
-    color: #000000;
-    font-size: 22px;
-    line-height: 1;
-    background-color: #EDFBFE;
-    font-weight: bold;
-    padding: 16px;
-    font-family: Inter, sans-serif;
-    border: 0;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-left: 43%;
-    margin-right: 40%;
-}
-
 .submit-button:hover {
-    transition-duration: 0.3s;
-    color: #171616;
-    background-color: #EDFBFF;
-    -ms-transform: scale(1.2);
-    transform: scale(1.2);
-}
-
-.submit-button-2:hover {
     transition-duration: 0.3s;
     color: #171616;
     background-color: #EDFBFF;
