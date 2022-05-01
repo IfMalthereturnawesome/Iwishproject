@@ -63,6 +63,8 @@ public class WishListController {
             }
 
         }
+
+
         model.addAttribute("user",user);
         model.addAttribute("creator",creator);
         model.addAttribute("wishListID",wishListID);
@@ -83,7 +85,7 @@ public class WishListController {
         newWishList.setPhotos(fileName);
         newWishList.setUserID(userID);
 
-        if (fileName.isEmpty() && newWishList.getTitle().toLowerCase().contains("Fødsel".toLowerCase())) {
+        if (fileName.isEmpty() && newWishList.getTitle().toLowerCase().contains("Fød".toLowerCase())) {
             newWishList.setPhotos("tillykke-med-foedselsdagen-1.jpg");
             wishListRepository.addWishList(newWishList);
         } else if (fileName.isEmpty() && newWishList.getTitle().toLowerCase().contains("Jul".toLowerCase())) {

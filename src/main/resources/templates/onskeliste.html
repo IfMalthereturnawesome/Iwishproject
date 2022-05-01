@@ -17,7 +17,7 @@
         </div>
         <a href="../hvordan">Hvordan?</a>
         <a href="../omos">Om os</a>
-        <a th:each="onskelister :${wishList.get(0)} " th:href="@{/onskeliste/{wishListID}(wishListID=${onskelister.userID})}" class="login-button">Ønskelister</a>
+        <a th:each="onskelister :${wishListID} " th:href="@{/onskeliste/{wishListID}(wishListID=${wishListID})}" class="login-button">Ønskelister</a>
     </div>
 </nav>
 
