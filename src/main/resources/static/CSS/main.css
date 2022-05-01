@@ -160,6 +160,16 @@ body {
     background-repeat: no-repeat;
 }
 
+.article-index {
+    background-image: url("images/cloudimg left.png");
+    width: 100%;
+    height: 330px;
+    display: flex;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-top: -15%;
+}
+
 .aboutus {
     width: 100%;
     height: 350px;
@@ -228,7 +238,19 @@ body {
 
 .article-header {
     display: flex;
-    margin-top: 60px;
+    margin-top: 40px;
+    justify-content: start;
+    color: #f1efef;
+    font-size: 36px;
+    line-height: 1;
+    font-weight: bold;
+    margin-bottom: 20px;
+
+    font-family: Inter, sans-serif;
+}
+.article-header-index {
+    display: flex;
+    margin-top: -30px;
     justify-content: start;
     color: #f1efef;
     font-size: 36px;
