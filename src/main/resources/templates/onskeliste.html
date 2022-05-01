@@ -47,7 +47,7 @@
                     </p>
                     <div class="button">
                         <a th:href="@{/onsker/{wishListID}(wishListID=${onskelister.id})}"  class="button-small">SE ØNSKER</a>
-                        <a th:href="@{/sletonskeliste/{id}(id=${onskelister.id})}" class="button-small-delete">SLET
+                        <a th:href="@{/sletonskeliste/{id}/{userID}(id=${onskelister.id},userID=${onskelister.userID})}" class="button-small-delete">SLET
                             ØNSKELISTE</a>
                     </div>
                 </div>
