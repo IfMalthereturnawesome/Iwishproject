@@ -718,6 +718,19 @@ li.list {
     margin-left: 40%;
     margin-right: 40%;
 }
+.submit-button-small {
+    color: #000000;
+    font-size: 22px;
+    line-height: 1;
+    background-color: #EDFBFE;
+    font-weight: bold;
+    padding: 16px;
+    font-family: Inter, sans-serif;
+    border: 0;
+    cursor: pointer;
+    border-radius: 5px;
+
+}
 
 input::-webkit-file-upload-button {
     margin-top: 10px;
@@ -785,6 +798,13 @@ input::-webkit-file-upload-button:hover {
 }
 
 .submit-button-index:hover {
+    transition-duration: 0.3s;
+    color: #171616;
+    background-color: #EDFBFF;
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+}
+.submit-button-small:hover {
     transition-duration: 0.3s;
     color: #171616;
     background-color: #EDFBFF;
