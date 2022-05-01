@@ -87,12 +87,13 @@ public String omOs(){
 
   }
 
-  @GetMapping("/sletonske/{id}")
-  public String deleteWish(@PathVariable("id") int id){
-   // IWishRepository iWishRepository = new IWishRepository();
-    iWishRepository.deleteWish(id);
+  @GetMapping("/sletonske/{id}/{wishListID}")
+  public String deleteWish(@PathVariable("id") int id,@PathVariable("wishListID")int wishListID, Model model){
 
-    return "redirect:/onsker";
+    iWishRepository.deleteWish(id);
+    model.addAttribute("wishList", iWishRepository.findAllWishes(wishListID));
+
+    return "redirect:/onsker" + "/" + wishListID;
   }
 
 }

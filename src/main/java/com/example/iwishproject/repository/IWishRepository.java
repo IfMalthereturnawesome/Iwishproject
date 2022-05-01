@@ -26,7 +26,7 @@ public class IWishRepository {
       final String SQL_QUERY = "SELECT * FROM createwish WHERE wishListID = '"+wishListID+"'";
       ResultSet resultSet = statement.executeQuery(SQL_QUERY);
 
-      // Læser fra tabel
+        //Læser fra tabel
       while(resultSet.next()){
         //Giver informationerne fra tabel til attributer
         int id = resultSet.getInt(1);

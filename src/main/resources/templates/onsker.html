@@ -61,7 +61,7 @@
                     </p>
                     <div class="button">
                         <a th:href="${onsker.link}" target="_blank" class="button-small">KØB HER</a>
-                        <a th:href="@{/sletonske/{id}(id=${onsker.id})}" class="button-small-delete">SLET ØNSKE</a>
+                        <a th:href="@{/sletonske/{id}/{wishListID}(id=${onsker.id},wishListID=${onsker.listID})}" class="button-small-delete">SLET ØNSKE</a>
                     </div>
                 </div>
 
