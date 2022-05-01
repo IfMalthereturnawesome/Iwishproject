@@ -44,6 +44,22 @@ body {
     font-size: 14px;
     line-height: 1;
 }
+.h4-header-before::before {
+    content: "Ønskelister i alt: ";
+    display: inline;
+    justify-content: start;
+    color: #2f2f2d;
+    font-size: 16px;
+    line-height: 1;
+}
+.h4-header-before-wishes::before {
+    content: "Ønsker i alt: ";
+    display: inline;
+    justify-content: start;
+    color: #2f2f2d;
+    font-size: 16px;
+    line-height: 1;
+}
 
 .container {
     width: 1200px;

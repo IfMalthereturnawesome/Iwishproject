@@ -28,7 +28,10 @@ public class User {
   public User() {
   }
 
-  public String getPassword() {
+    public User(String firstName) {
+    }
+
+    public String getPassword() {
     return password;
   }
 

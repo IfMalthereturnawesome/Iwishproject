@@ -26,6 +26,11 @@
     <h1 class="article-header-onske">
         Ønsker
     </h1>
+    <div class="header" th:each=" names : ${onske.size()}">
+        <h2 class="h4-header-before-wishes" th:text="${names}">
+            Du har
+        </h2>
+    </div>
 
     <div class="container-cards" >
         <div th:each="onskelister : ${wishList}">
@@ -88,7 +93,7 @@
 </div>
 <div class="text-section">'
     <div class="article-1">
-        <div class="article-wrapper-2"></div>
+        <div class="article -wrapper-2"></div>
         <div class="article-2"></div>
     </div>
 </div>

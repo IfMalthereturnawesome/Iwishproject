@@ -9,21 +9,25 @@ import com.example.iwishproject.repository.WishListRepository;
 import com.example.iwishproject.utility.FileUploadUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
+@ControllerAdvice
 @Controller
 public class WishListController {
     UserRepository userRepository;
     WishListRepository wishListRepository;
     IWishRepository iWishRepository;
+
+    private Map<Long, WishList> wishListMap = new HashMap<>();
 
     public WishListController(WishListRepository wishListRepository) {
         this.wishListRepository = wishListRepository;
@@ -64,18 +68,24 @@ public class WishListController {
 
         }
 
-
         model.addAttribute("user",user);
         model.addAttribute("creator",creator);
-        model.addAttribute("wishListID",wishListID);
+        model.addAttribute("userID",wishListID);
         model.addAttribute("wishList",wishListRepository.findAllWishLists(wishListID));
         return "onskeliste";
+    }
+
+    @ModelAttribute
+    public void addAttributes(Model model) {
+        model.addAttribute("msg", "Welcome to the Netherlands!");
     }
 
     @PostMapping("/tilføjonskeliste")
     public String addWishList(@RequestParam("userID") int userID,
                               @RequestParam("title") String title,
                               @RequestParam("description") String description,
+                              @ModelAttribute("user") WishList user,
+                              BindingResult result, ModelMap model,
                               @RequestParam(value = "image", required = false) MultipartFile multipartFile) throws IOException {
         WishListRepository wishListRepository = new WishListRepository();
         WishList newWishList = new WishList();
@@ -84,6 +94,16 @@ public class WishListController {
         String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
         newWishList.setPhotos(fileName);
         newWishList.setUserID(userID);
+
+        if (result.hasErrors()) {
+            return "error";
+        }
+
+        model.addAttribute("userID",user.getUserID());
+        model.addAttribute("title",user.getTitle());
+        model.addAttribute("listID",user.getId());
+
+        wishListMap.put((long) user.getUserID(),user);
 
         if (fileName.isEmpty() && newWishList.getTitle().toLowerCase().contains("Fød".toLowerCase())) {
             newWishList.setPhotos("tillykke-med-foedselsdagen-1.jpg");

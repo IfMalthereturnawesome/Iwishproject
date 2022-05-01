@@ -1,5 +1,7 @@
 <!DOCTYPE html>
+
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
+
 <head>
     <meta charset="UTF-8">
     <title>ønskeliste</title>
@@ -24,8 +26,12 @@
 <div class="container">
     <h1 class="article-header-lister">
         Ønskelister
-
     </h1>
+    <div class="header" th:each=" names : ${wishList.size()}">
+        <h2 class="h4-header-before" th:text="${names}">
+            Du har
+        </h2>
+    </div>
 
     <div class="container-cards">
         <div th:each="onskelister : ${wishList}">
@@ -48,20 +54,20 @@
 
             </div>
         </div>
-        <form
-                method="post"
-                action="/tilføjonskeliste"
+        <form   th:object="${wishListID}"
+                method="POST"
+                action="/tilføjonskeliste" modelAttribute="user"
                 enctype="multipart/form-data"
                 class="form-control">
             <div class="container-form-big">
                 <label class="header">Navn</label>
-                <input class="input-field" type="text" placeholder="Enter title" name="title" required>
+                <input class="input-field" type="text" placeholder="Enter Title" name="title" required/>
 
                 <label class="header">Beskrivelse</label>
-                <input class="input-field" type="text" placeholder="Enter description" name="description" required>
+                <input class="input-field" type="text" placeholder="Enter description" name="description" required/>
 
                 <label class="header">User ID</label>
-                <input class="input-field" type="text" placeholder="Enter UserID" name="userID">
+                <input class="input-field" type="hidden" name="userID" th:value="${userID}" />
 
                 <label class="header">Billed</label> <br>
                 <input type="file" name="image" accept="image/png, image/jpeg, image/jpg"/>

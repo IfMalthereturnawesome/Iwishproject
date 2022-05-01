@@ -51,8 +51,6 @@ public String omOs(){
     return "onsker";
   }
 
-
-
   @PostMapping("/tilføjonske")
   public String addWish(@RequestParam("wishListID") int wishListID,
                         @RequestParam("title") String title,

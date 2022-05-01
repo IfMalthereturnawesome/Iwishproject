@@ -8,8 +8,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.example.iwishproject.utility.ConnectionManager.getConnection;
+import static com.example.iwishproject.utility.ConnectionManager.getOffConnection;
 
 @Repository
 public class UserRepository {
@@ -61,6 +64,36 @@ public class UserRepository {
   public User findUserById(String id) {
     return findUserWhere("id", id);
   }
+
+  public List<User> findUserName(int id){
+    getConnection();
+    ArrayList<User> userList = new ArrayList<>();
+    final String QUERY = "SELECT * FROM registeredusers WHERE ID = '"+id+"'";
+    //User loginUser = null;
+
+    try {
+      Statement statement = getConnection().createStatement();
+      ResultSet resultSet = statement.executeQuery(QUERY);
+
+      while (resultSet.next()) {
+        int ID = resultSet.getInt(1);
+        String eMail = resultSet.getString(2);
+        String firstName = resultSet.getString(3);
+        String lastName = resultSet.getString(4);
+        String password = resultSet.getString(5);
+        userList.add(new User(ID,eMail,password,firstName,lastName));
+       // loginUser = new User(firstName);
+      }
+      statement.close();
+      getOffConnection();
+
+    } catch (SQLException e) {
+      System.out.println("Could not find user");
+      e.printStackTrace();
+    }
+    return userList; //User not found
+  }
+
 
   public User findUserWhere(String field,String userID){
     //get connection from ConnectionManager
