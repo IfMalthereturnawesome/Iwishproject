@@ -704,6 +704,21 @@ li.list {
 
 }
 
+.submit-button-index {
+    color: #000000;
+    font-size: 45px;
+    line-height: 1;
+    background-color: #EDFBFE;
+    font-weight: bold;
+    padding: 16px;
+    font-family: Inter, sans-serif;
+    border: 0;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 40%;
+    margin-right: 40%;
+}
+
 input::-webkit-file-upload-button {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -727,32 +742,10 @@ input::-webkit-file-upload-button:hover {
     transform: scale(1.01);
 }
 
-.submit-button-small {
-    margin-top: 5px;
-    margin-bottom: 10px;
-    color: #000000;
-    font-size: 24px;
-    line-height: 1;
-    display: flex;
-    justify-content: stretch;
-    background-color: #EDFBFE;
-    font-weight: bold;
-    padding: 10px;
-    font-family: Inter, sans-serif;
-    border: 0;
-    cursor: pointer;
-    border-radius: 5px;
-
+.button-index {
+    margin-top: -300px;
+    padding-bottom: 220px;
 }
-
-.submit-button-small:hover {
-    transition-duration: 0.3s;
-    color: #171616;
-    background-color: #EDFBFF;
-    -ms-transform: scale(1.1);
-    transform: scale(1.1);
-}
-
 
 .button-small {
     background: #FFD75E;
@@ -784,6 +777,14 @@ input::-webkit-file-upload-button:hover {
 }
 
 .submit-button:hover {
+    transition-duration: 0.3s;
+    color: #171616;
+    background-color: #EDFBFF;
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+.submit-button-index:hover {
     transition-duration: 0.3s;
     color: #171616;
     background-color: #EDFBFF;
