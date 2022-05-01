@@ -472,7 +472,7 @@ h2 {
 .maintext::before {
     content: "Delevenlig";
     display: flex;
-    margin-top: 80px;
+    margin-top: 120px;
     justify-content: start;
     color: #2f2f2d;
     font-size: 36px;
